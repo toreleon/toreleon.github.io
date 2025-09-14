@@ -1,77 +1,90 @@
-# Minimalist Portfolio Website
+## Thang Le Viet — Portfolio (Next.js + Tailwind)
 
-A clean, modern portfolio website built with Next.js and Tailwind CSS, featuring smooth animations and dark/light theme support.
+A fast, single‑page developer portfolio built with Next.js App Router, React 19, and Tailwind CSS v4. The site statically exports for GitHub Pages and includes smooth section transitions, manual dark mode, and a clean content structure you can edit in one place.
 
-## ✨ Features
+— Live URL: add your site link here
 
-- **Minimalist Design** - Clean typography with Geist font and strategic use of whitespace
-- **Responsive Layout** - Mobile-first design that works on all devices
-- **Theme Toggle** - Seamless dark/light mode switching
-- **Smooth Animations** - Subtle scroll-triggered animations and hover effects
-- **Modern Stack** - Built with Next.js 15, TypeScript, and Tailwind CSS
+## Features
 
-## 🚀 Built With
+- Modern stack: Next.js 15, React 19, Tailwind v4
+- Static export: optimized for GitHub Pages hosting
+- Section nav: smooth scrolling + active section indicator
+- Manual dark mode: lightweight toggle, no client provider needed
+- Clean content model: edit intro, work history, publications, and links in one file
 
-- [Next.js](https://nextjs.org/) - React framework
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [v0.dev](https://v0.dev/) - AI-powered development
+## Tech Stack
 
-## 📦 Getting Started
+- Next.js App Router and Static Export
+- React 19 + TypeScript
+- Tailwind CSS v4 + tw-animate-css
+- Radix UI primitives and shadcn-style components
+- Optional: @vercel/analytics (installed, not wired by default)
 
-```bash
-# Clone the repository
-git clone <your-repo-url>
+## Quick Start
 
-# Install dependencies (pnpm recommended)
-pnpm install
+- Prerequisites: Node 20+, PNPM 10+
+- Install: `pnpm install`
+- Dev: `pnpm dev` then open http://localhost:3000
+- Build: `pnpm build` → outputs static site to `out/`
+- Preview static build: `pnpm dlx serve out` (or any static file server)
 
-# Run development server
-pnpm dev
-```
+## Editing Content
 
-Open [http://localhost:3000](http://localhost:3000) to view the portfolio.
+- Site metadata: update title/description in `app/layout.tsx:12`
+- Main content: edit sections in `app/page.tsx:70` (intro), `app/page.tsx:147` (work), `app/page.tsx:245` (publications), `app/page.tsx:286` (connect/socials)
+- Global styles and theme tokens: `app/globals.css:1`
+- Images and assets: place files in `public/`
 
-## 🎨 Customization
+Notes
+- The page highlights performance metrics in bullet points using a simple pattern highlighter.
+- Theme toggling works by toggling the `dark` class on `<html>`; no provider is required. A Next Themes provider is scaffolded at `components/theme-provider.tsx:1` if you prefer system theme and persistence.
 
-The portfolio is designed to be easily customizable:
+## Deployment (GitHub Pages)
 
-- Update personal information in `app/page.tsx`
-- Modify colors and styling in `app/globals.css`
-- Add or remove sections as needed
+This repo is preconfigured to deploy via GitHub Actions to GitHub Pages.
 
-## 📄 License
+- Workflow: `.github/workflows/deploy.yml:1`
+- Static export: `next.config.mjs:1` sets `output: 'export'` and auto‑configures `basePath/assetPrefix` for project pages.
 
-Open source and available under the [MIT License](LICENSE).
+Steps
+- Enable Pages: Settings → Pages → Source: GitHub Actions
+- Push to `main`: the action builds and publishes `out/` to Pages
+- User vs project pages
+  - User site (`username.github.io`): served at root (no basePath)
+  - Project site (`username.github.io/repo`): `next.config.mjs` computes `basePath` automatically when running on GitHub Actions
 
----
+Local path testing for project pages
+- If serving under a subpath locally, set `NEXT_PUBLIC_BASE_PATH=/<repo>` and emulate by opening files from `out/` (optional; the action handles this in CI).
 
-**Built with ❤️ using [v0.dev](https://v0.dev) by Felix Macaspac**
+## Project Structure
 
-## 🚀 Deploy to GitHub Pages
+- `app/`: App Router pages and layout
+- `app/layout.tsx`: fonts, metadata, global CSS
+- `app/page.tsx`: all portfolio sections and content arrays
+- `app/globals.css`: Tailwind v4 entry + CSS variables + animations
+- `components/`: UI building blocks (Radix/shadcn‑style)
+- `public/`: static assets (images, icons)
+- `next.config.mjs`: static export + GitHub Pages pathing
+- `.github/workflows/deploy.yml`: CI for Pages
 
-This project is configured for static export and GitHub Pages deployment.
+## Development Notes
 
-- Static export is enabled via `output: 'export'` in `next.config.mjs`.
-- A workflow at `.github/workflows/deploy.yml` builds and deploys to Pages.
+- TypeScript/ESLint: build ignores type and lint errors to avoid blocking static export. Fix issues during dev with your editor or `pnpm lint`.
+- Static export: avoid server‑only features (no API routes). Client components and static data are fine.
 
-Steps:
+## Customize This Template
 
-1) Push to `main` and enable Pages:
-   - GitHub → Repo → Settings → Pages → Build and deployment → Source: GitHub Actions.
-2) The workflow will build (`pnpm build`) and publish the `out/` folder.
-3) Your site will be available at:
-   - `https://<username>.github.io/<repo>` for a project site, or
-   - `https://<username>.github.io` if the repo is named `<username>.github.io`.
+- Replace name, headline, and location in `app/page.tsx:80`
+- Update work history and bullet points in `app/page.tsx:158`
+- Edit publications in `app/page.tsx:251`
+- Update social links in `app/page.tsx:289`
+- Tweak colors/radii in `app/globals.css:4`
 
-To host at `thanglv.github.io` root:
+## Acknowledgements
 
-- Rename this repo to `thanglv.github.io`, or
-- Create `thanglv/thanglv.github.io` and move this code there.
+- Generated with v0.dev (Vercel) — see `app/layout.tsx:12` generator tag
+- Radix UI, shadcn/ui patterns, Lucide React icons
 
-Optional local export test:
+## License
 
-```bash
-pnpm build
-npx serve out  # or any static server
-```
+No license file is included. If this is public, add a `LICENSE` file (e.g., MIT) or keep the code private.
