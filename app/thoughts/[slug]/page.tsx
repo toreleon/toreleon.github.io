@@ -1,5 +1,7 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import TopNav from "@/components/top-nav"
+import type { Metadata } from "next"
 
 // Thought data - in a real app, this would come from a CMS or database
 const thoughts = [
@@ -206,6 +208,49 @@ The goal of modernization isn't just to upgrade technology—it's to preserve in
   }
 ]
 
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const thought = thoughts.find((t) => t.slug === params.slug)
+
+  if (!thought) {
+    return {
+      title: "Article Not Found",
+    }
+  }
+
+  return {
+    title: thought.title,
+    description: thought.excerpt,
+    keywords: [...thought.tags, "AI Engineering", "Blog", "Tech Insights", "Thang Le Viet"],
+    authors: [{ name: "Thang Le Viet" }],
+    openGraph: {
+      title: thought.title,
+      description: thought.excerpt,
+      type: "article",
+      publishedTime: thought.date,
+      authors: ["Thang Le Viet"],
+      tags: thought.tags,
+      url: `https://toreleon.github.io/thoughts/${thought.slug}`,
+      images: [
+        {
+          url: "/og-image.jpg",
+          width: 1200,
+          height: 630,
+          alt: thought.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: thought.title,
+      description: thought.excerpt,
+      images: ["/og-image.jpg"],
+    },
+    alternates: {
+      canonical: `https://toreleon.github.io/thoughts/${thought.slug}`,
+    },
+  }
+}
+
 export default function ThoughtPage({ params }: { params: { slug: string } }) {
   const thought = thoughts.find((t) => t.slug === params.slug)
 
@@ -213,55 +258,98 @@ export default function ThoughtPage({ params }: { params: { slug: string } }) {
     notFound()
   }
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: thought.title,
+    description: thought.excerpt,
+    image: 'https://toreleon.github.io/og-image.jpg',
+    datePublished: thought.date,
+    author: {
+      '@type': 'Person',
+      name: 'Thang Le Viet',
+      url: 'https://toreleon.github.io',
+      jobTitle: 'AI Engineer',
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Thang Le Viet',
+      url: 'https://toreleon.github.io',
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': `https://toreleon.github.io/thoughts/${thought.slug}`,
+    },
+    articleSection: thought.category,
+    keywords: thought.tags.join(', '),
+    wordCount: thought.fullContent.split(' ').length,
+    timeRequired: thought.readTime,
+  }
+
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <main className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 py-20 sm:py-32">
-        {/* Back button */}
-        <div className="mb-8">
-          <Link
-            href="/thoughts"
-            className="group inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
-          >
-            <svg
-              className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-            Back to All Thoughts
-          </Link>
-        </div>
+    <div className="min-h-screen bg-background text-foreground flex flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <TopNav activeTab="blog" />
 
+      <main className="flex-1 w-full mt-16 mb-8">
         {/* Article header */}
-        <header className="mb-12">
-          <div className="flex items-center justify-between text-xs text-muted-foreground font-mono mb-6">
-            <span>{thought.date}</span>
-            <span>{thought.readTime}</span>
+        <header className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 pt-20 pb-8">
+          {/* Category Badge */}
+          <div className="mb-6">
+            <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-foreground text-background rounded-md">
+              {thought.category}
+            </span>
           </div>
 
-          <div className="inline-flex items-center px-3 py-1 text-xs font-medium bg-muted/50 text-muted-foreground rounded-full border border-border mb-6">
-            {thought.category}
-          </div>
-
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6 leading-tight">
+          {/* Title */}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-foreground mb-6 tracking-tight">
             {thought.title}
           </h1>
 
-          <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl">
+          {/* Excerpt */}
+          <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed font-normal mb-8">
             {thought.excerpt}
           </p>
+
+          {/* Meta Information */}
+          <div className="flex items-center gap-4 text-base text-muted-foreground pt-6 border-t border-border">
+            <div className="flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span>{thought.date}</span>
+            </div>
+            <span className="text-muted-foreground/30">•</span>
+            <div className="flex items-center gap-2">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span>{thought.readTime}</span>
+            </div>
+          </div>
         </header>
 
         {/* Article content */}
-        <article className="prose prose-lg max-w-none">
-          <div className="whitespace-pre-line text-base sm:text-lg leading-relaxed space-y-6">
+        <article className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-8">
+          <div className="prose prose-lg prose-neutral dark:prose-invert max-w-none
+            prose-headings:font-bold prose-headings:text-foreground prose-headings:tracking-tight
+            prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
+            prose-p:text-[1.125rem] prose-p:leading-[1.875rem] prose-p:text-muted-foreground prose-p:mb-6
+            prose-li:text-[1.0625rem] prose-li:leading-[1.75rem] prose-li:text-muted-foreground prose-li:my-2
+            prose-strong:text-foreground prose-strong:font-semibold
+            prose-a:text-foreground prose-a:underline prose-a:decoration-muted-foreground/30 hover:prose-a:decoration-foreground
+            prose-blockquote:border-l-4 prose-blockquote:border-border prose-blockquote:pl-6 prose-blockquote:italic
+            prose-code:text-foreground prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm
+          ">
+            <div className="space-y-6">
             {thought.fullContent.split('\n').map((paragraph, index) => {
               if (paragraph.startsWith('**') && paragraph.endsWith('**')) {
                 // Bold headings
                 return (
-                  <h2 key={index} className="text-2xl font-medium mt-8 mb-4 text-foreground">
+                  <h2 key={index}>
                     {paragraph.slice(2, -2)}
                   </h2>
                 )
@@ -271,96 +359,77 @@ export default function ThoughtPage({ params }: { params: { slug: string } }) {
                 const boldText = boldPart.slice(4)
                 const regularText = rest.join('**:')
                 return (
-                  <div key={index} className="flex items-start gap-3">
-                    <span className="text-muted-foreground mt-1">•</span>
-                    <p className="text-muted-foreground leading-relaxed">
-                      <span className="font-semibold text-foreground">{boldText}:</span>
-                      {regularText}
-                    </p>
-                  </div>
+                  <li key={index} className="list-none ml-0">
+                    <strong>{boldText}:</strong>
+                    {regularText}
+                  </li>
                 )
               } else if (paragraph.startsWith('- ')) {
                 // Regular list items
                 return (
-                  <div key={index} className="flex items-start gap-3">
-                    <span className="text-muted-foreground mt-1">•</span>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {paragraph.slice(2)}
-                    </p>
-                  </div>
+                  <li key={index} className="list-disc ml-6">
+                    {paragraph.slice(2)}
+                  </li>
                 )
               } else if (/^\d+\./.test(paragraph)) {
                 // Numbered list items
                 return (
-                  <div key={index} className="flex items-start gap-3">
-                    <span className="text-muted-foreground mt-1 font-medium">
-                      {paragraph.match(/^\d+\./)?.[0]}
-                    </span>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {paragraph.replace(/^\d+\.\s*/, '')}
-                    </p>
-                  </div>
+                  <li key={index} className="list-decimal ml-6">
+                    {paragraph.replace(/^\d+\.\s*/, '')}
+                  </li>
                 )
               } else if (paragraph.trim() === '') {
-                // Empty lines
-                return <br key={index} />
+                // Empty lines - skip to maintain spacing
+                return null
               } else {
                 // Regular paragraphs
                 return (
-                  <p key={index} className="text-muted-foreground leading-relaxed">
+                  <p key={index}>
                     {paragraph}
                   </p>
                 )
               }
             })}
           </div>
+          </div>
         </article>
 
+        {/* Separator */}
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent my-12"></div>
+        </div>
+
         {/* Tags */}
-        <div className="mt-12 pt-8 border-t border-border">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-8">
           <div className="flex flex-wrap gap-2">
             {thought.tags.map((tag, index) => (
               <span
                 key={index}
-                className="px-3 py-1 text-sm text-muted-foreground bg-muted/30 rounded-md border border-border/50"
+                className="px-4 py-2 text-sm font-medium text-muted-foreground bg-muted/50 hover:bg-muted rounded-full transition-colors cursor-default"
               >
-                #{tag}
+                {tag}
               </span>
             ))}
           </div>
         </div>
 
-        {/* Navigation */}
-        <div className="mt-12 pt-8 border-t border-border">
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        {/* Back to Blog CTA */}
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
+          <div className="flex items-center justify-center">
             <Link
-              href="/thoughts"
-              className="group inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
+              href="/"
+              className="group inline-flex items-center gap-3 px-8 py-4 text-base font-semibold text-background bg-foreground hover:bg-foreground/90 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
             >
               <svg
-                className="w-4 h-4 transform group-hover:-translate-x-1 transition-transform duration-300"
+                className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-200"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                strokeWidth={2.5}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
-              Back to All Thoughts
-            </Link>
-
-            <Link
-              href="/#connect"
-              className="group inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300"
-            >
-              Connect with me
-              <svg
-                className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
+              <span>Read More Articles</span>
             </Link>
           </div>
         </div>

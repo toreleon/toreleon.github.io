@@ -1,0 +1,27 @@
+{
+  "name": "Thang Le Viet - AI Engineer Portfolio & Blog",
+  "short_name": "Thang Le Viet",
+  "description": "AI Engineer specializing in large language models, agentic systems, and scalable ML platforms",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/placeholder-logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/placeholder-logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["technology", "portfolio", "blog"],
+  "lang": "en-US"
+}
+
