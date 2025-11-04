@@ -296,35 +296,35 @@ export default function ThoughtPage({ params }: { params: { slug: string } }) {
 
       <main className="flex-1 w-full mt-16 mb-8">
         {/* Article header */}
-        <header className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 pt-20 pb-8">
+        <header className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 pt-24 pb-12">
           {/* Category Badge */}
-          <div className="mb-6">
-            <span className="inline-block px-3 py-1 text-xs font-semibold uppercase tracking-wider bg-foreground text-background rounded-md">
+          <div className="mb-8">
+            <span className="inline-flex items-center px-5 py-2.5 text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-foreground to-foreground/80 text-background rounded-xl shadow-lg">
               {thought.category}
             </span>
           </div>
 
           {/* Title */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-foreground mb-6 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] text-foreground mb-8 tracking-tight">
             {thought.title}
           </h1>
 
           {/* Excerpt */}
-          <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed font-normal mb-8">
+          <p className="text-xl sm:text-2xl lg:text-3xl text-muted-foreground leading-relaxed font-light mb-10 max-w-3xl">
             {thought.excerpt}
           </p>
 
           {/* Meta Information */}
-          <div className="flex items-center gap-4 text-base text-muted-foreground pt-6 border-t border-border">
-            <div className="flex items-center gap-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div className="flex flex-wrap items-center gap-6 text-base text-muted-foreground pt-8 border-t-2 border-border/50">
+            <div className="flex items-center gap-3 font-medium">
+              <svg className="w-5 h-5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
               <span>{thought.date}</span>
             </div>
-            <span className="text-muted-foreground/30">•</span>
-            <div className="flex items-center gap-2">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <span className="text-muted-foreground/40 font-bold">•</span>
+            <div className="flex items-center gap-3 font-medium">
+              <svg className="w-5 h-5 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <span>{thought.readTime}</span>
@@ -333,16 +333,16 @@ export default function ThoughtPage({ params }: { params: { slug: string } }) {
         </header>
 
         {/* Article content */}
-        <article className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-8">
+        <article className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
           <div className="prose prose-lg prose-neutral dark:prose-invert max-w-none
             prose-headings:font-bold prose-headings:text-foreground prose-headings:tracking-tight
-            prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
-            prose-p:text-[1.125rem] prose-p:leading-[1.875rem] prose-p:text-muted-foreground prose-p:mb-6
-            prose-li:text-[1.0625rem] prose-li:leading-[1.75rem] prose-li:text-muted-foreground prose-li:my-2
-            prose-strong:text-foreground prose-strong:font-semibold
-            prose-a:text-foreground prose-a:underline prose-a:decoration-muted-foreground/30 hover:prose-a:decoration-foreground
-            prose-blockquote:border-l-4 prose-blockquote:border-border prose-blockquote:pl-6 prose-blockquote:italic
-            prose-code:text-foreground prose-code:bg-muted prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-md prose-code:text-sm
+            prose-h2:text-4xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:leading-tight
+            prose-p:text-[1.1875rem] prose-p:leading-[2rem] prose-p:text-muted-foreground prose-p:mb-7 prose-p:font-light
+            prose-li:text-[1.125rem] prose-li:leading-[1.875rem] prose-li:text-muted-foreground prose-li:my-3 prose-li:font-light
+            prose-strong:text-foreground prose-strong:font-bold
+            prose-a:text-foreground prose-a:underline prose-a:decoration-muted-foreground/30 hover:prose-a:decoration-foreground prose-a:transition-all
+            prose-blockquote:border-l-4 prose-blockquote:border-border prose-blockquote:pl-8 prose-blockquote:italic prose-blockquote:text-muted-foreground/90
+            prose-code:text-foreground prose-code:bg-muted/70 prose-code:px-2 prose-code:py-1 prose-code:rounded-lg prose-code:text-sm prose-code:font-semibold
           ">
             <div className="space-y-6">
             {thought.fullContent.split('\n').map((paragraph, index) => {
@@ -396,16 +396,17 @@ export default function ThoughtPage({ params }: { params: { slug: string } }) {
 
         {/* Separator */}
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12">
-          <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent my-12"></div>
+          <div className="h-px bg-gradient-to-r from-transparent via-border/60 to-transparent my-16"></div>
         </div>
 
         {/* Tags */}
         <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-8">
-          <div className="flex flex-wrap gap-2">
+          <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground mb-5">Topics</h3>
+          <div className="flex flex-wrap gap-3">
             {thought.tags.map((tag, index) => (
               <span
                 key={index}
-                className="px-4 py-2 text-sm font-medium text-muted-foreground bg-muted/50 hover:bg-muted rounded-full transition-colors cursor-default"
+                className="px-5 py-2.5 text-sm font-bold text-muted-foreground bg-muted/60 hover:bg-muted rounded-xl transition-all duration-300 cursor-default border border-border/30 hover:border-border hover:scale-105 transform"
               >
                 {tag}
               </span>
@@ -414,18 +415,18 @@ export default function ThoughtPage({ params }: { params: { slug: string } }) {
         </div>
 
         {/* Back to Blog CTA */}
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
           <div className="flex items-center justify-center">
             <Link
               href="/"
-              className="group inline-flex items-center gap-3 px-8 py-4 text-base font-semibold text-background bg-foreground hover:bg-foreground/90 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl"
+              className="group inline-flex items-center gap-4 px-10 py-5 text-base font-bold text-background bg-gradient-to-r from-foreground to-foreground/90 hover:from-foreground/90 hover:to-foreground rounded-2xl transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 transform uppercase tracking-wide"
             >
               <svg
-                className="w-5 h-5 transform group-hover:-translate-x-1 transition-transform duration-200"
+                className="w-5 h-5 transform group-hover:-translate-x-2 transition-transform duration-300"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
-                strokeWidth={2.5}
+                strokeWidth={3}
               >
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
               </svg>

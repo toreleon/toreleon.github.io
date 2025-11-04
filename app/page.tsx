@@ -403,78 +403,86 @@ export default function Home() {
 
       <main className="flex-1 max-w-6xl mx-auto px-6 sm:px-8 lg:px-16 py-20 sm:py-32 mt-16 mb-8 w-full">
         {/* Header */}
-        <header className="mb-16 sm:mb-20">
-          <div className="space-y-6">
-            <div className="space-y-2">
-              <div className="text-sm text-muted-foreground font-mono tracking-wider">BLOG / 2025</div>
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light">Thoughts & Insights</h1>
+        <header className="mb-20 sm:mb-24">
+          <div className="space-y-8">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-muted/50 rounded-full">
+                <div className="w-1.5 h-1.5 bg-foreground rounded-full animate-pulse"></div>
+                <span className="text-xs text-foreground font-medium tracking-wide">BLOG / 2025</span>
+              </div>
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight bg-gradient-to-br from-foreground to-foreground/60 bg-clip-text">
+                Thoughts & Insights
+              </h1>
             </div>
-            <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed max-w-3xl">
-              Insights, reflections, and learnings from my journey in AI engineering, 
+            <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed max-w-3xl font-light">
+              Insights, reflections, and learnings from my journey in AI engineering,
               software development, and technology leadership.
             </p>
           </div>
         </header>
 
         {/* Thoughts List */}
-        <div className="space-y-6">
+        <div className="space-y-8">
           {thoughts.map((post, index) => (
             <Link
               key={index}
               href={`/thoughts/${post.slug}`}
               className="group block"
             >
-              <article className="flex flex-col sm:flex-row gap-6 p-6 sm:p-8 border-l-4 border-border hover:border-foreground transition-all duration-300 bg-card hover:bg-muted/50 rounded-r-xl">
+              <article className="relative flex flex-col sm:flex-row gap-6 p-8 sm:p-10 border border-border/50 hover:border-border transition-all duration-500 bg-card/50 hover:bg-card backdrop-blur-sm rounded-2xl shadow-sm hover:shadow-xl group-hover:scale-[1.01] transform">
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-muted/0 to-muted/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl pointer-events-none"></div>
+
                 {/* Left Side - Metadata */}
-                <div className="sm:w-48 flex-shrink-0 space-y-4">
+                <div className="sm:w-52 flex-shrink-0 space-y-5 relative z-10">
                   {/* Date */}
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="flex items-center gap-2.5 text-sm text-muted-foreground font-medium">
+                    <svg className="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span className="font-medium">{post.date}</span>
+                    <span>{post.date}</span>
                   </div>
 
                   {/* Category Badge */}
-                  <div className="inline-flex items-center px-3 py-1.5 text-xs font-semibold bg-foreground text-background rounded-full">
+                  <div className="inline-flex items-center px-4 py-2 text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-foreground to-foreground/80 text-background rounded-lg shadow-md">
                     {post.category}
                   </div>
 
                   {/* Read Time */}
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="flex items-center gap-2.5 text-sm text-muted-foreground">
+                    <svg className="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <span>{post.readTime}</span>
+                    <span className="font-medium">{post.readTime}</span>
                   </div>
                 </div>
 
                 {/* Right Side - Content */}
-                <div className="flex-1 space-y-4">
+                <div className="flex-1 space-y-5 relative z-10">
                   {/* Title */}
-                  <h3 className="text-2xl sm:text-3xl font-semibold text-foreground group-hover:text-foreground/70 transition-colors duration-300 leading-tight">
+                  <h3 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-foreground group-hover:text-foreground/80 transition-colors duration-300 leading-tight tracking-tight">
                     {post.title}
                   </h3>
 
                   {/* Excerpt */}
-                  <p className="text-muted-foreground leading-relaxed text-base line-clamp-2">
+                  <p className="text-muted-foreground leading-relaxed text-base sm:text-lg line-clamp-2 font-light">
                     {post.excerpt}
                   </p>
 
                   {/* Tags and Read More */}
-                  <div className="flex flex-wrap items-center gap-3 pt-2">
+                  <div className="flex flex-wrap items-center gap-2.5 pt-3">
                     {post.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="px-2.5 py-1 text-xs font-medium text-muted-foreground bg-muted/50 rounded-md hover:bg-muted transition-colors"
+                        className="px-3 py-1.5 text-xs font-semibold text-muted-foreground bg-muted/60 hover:bg-muted rounded-lg transition-colors border border-border/30"
                       >
-                        #{tag}
+                        {tag}
                       </span>
                     ))}
-                    <div className="ml-auto flex items-center gap-2 text-sm font-medium text-foreground group-hover:gap-3 transition-all">
-                      <span className="hidden sm:inline">Read article</span>
+                    <div className="ml-auto flex items-center gap-2.5 text-sm font-bold text-foreground group-hover:gap-4 transition-all duration-300">
+                      <span className="hidden sm:inline uppercase tracking-wide">Read More</span>
                       <svg
-                        className="w-5 h-5 transform group-hover:translate-x-1 transition-transform duration-300"
+                        className="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

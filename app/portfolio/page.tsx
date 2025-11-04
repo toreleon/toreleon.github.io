@@ -138,59 +138,53 @@ export default function Portfolio() {
         </div>
       </nav>
 
-      <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-10 hidden lg:block">
-        <div className="flex flex-col gap-4">
-          {["intro", "work", "education"].map((section) => (
-            <button
-              key={section}
-              onClick={() => document.getElementById(section)?.scrollIntoView({ behavior: "smooth" })}
-              className={`w-2 h-8 rounded-full transition-all duration-500 ${
-                activeSection === section ? "bg-foreground" : "bg-muted-foreground/30 hover:bg-muted-foreground/60"
-              }`}
-              aria-label={`Navigate to ${section}`}
-            />
-          ))}
-        </div>
-      </nav>
-
-      <main className="flex-1 max-w-4xl mx-auto px-6 sm:px-8 lg:px-16 pt-16 pb-8 w-full">
+      <main className="flex-1 max-w-5xl mx-auto px-6 sm:px-8 lg:px-16 pt-16 pb-8 w-full">
         <header
           id="intro"
           ref={(el) => { sectionsRef.current[0] = el }}
           className="min-h-screen flex items-center"
         >
-          <div className="grid lg:grid-cols-5 gap-12 sm:gap-16 w-full">
+          <div className="grid lg:grid-cols-5 gap-8 sm:gap-12 w-full">
             <div className="lg:col-span-3 space-y-6 sm:space-y-8">
-              <div className="space-y-3 sm:space-y-2">
-                <div className="text-sm text-muted-foreground font-mono tracking-wider">PORTFOLIO / 2025</div>
-                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight">
+              <div className="space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-muted/50 rounded-full">
+                  <div className="w-1.5 h-1.5 bg-foreground rounded-full animate-pulse"></div>
+                  <span className="text-xs text-foreground font-medium tracking-wide">PORTFOLIO / 2025</span>
+                </div>
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
                   Thang
                   <br />
                   <span className="text-muted-foreground">Le Viet</span>
                 </h1>
               </div>
 
-              <div className="space-y-6 max-w-md">
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
+              <div className="space-y-6 max-w-xl">
+                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed font-light">
                   AI Engineer with a strong background in computer science, focusing on
-                  <span className="text-foreground"> large language models</span>,
-                  <span className="text-foreground"> agentic systems</span>, and
-                  <span className="text-foreground"> scalable ML platforms</span>.
+                  <span className="text-foreground font-semibold"> large language models</span>,
+                  <span className="text-foreground font-semibold"> agentic systems</span>, and
+                  <span className="text-foreground font-semibold"> scalable ML platforms</span>.
                 </p>
 
-                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm text-muted-foreground">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 text-sm text-muted-foreground font-medium">
                   <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse shadow-lg shadow-green-500/50"></div>
                     Available for work
                   </div>
-                  <div>Ho Chi Minh City, Viet Nam</div>
+                  <div className="flex items-center gap-2">
+                    <svg className="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    Ho Chi Minh City, Viet Nam
+                  </div>
                 </div>
               </div>
             </div>
 
             <div className="lg:col-span-2 flex flex-col justify-end space-y-6 sm:space-y-8 mt-8 lg:mt-0">
               <div className="space-y-4">
-                <div className="text-sm text-muted-foreground font-mono">CURRENTLY</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Currently</div>
                 <div className="space-y-4">
                   {[
                     {
@@ -204,22 +198,22 @@ export default function Portfolio() {
                       period: "Jan 2024 — Present",
                     },
                   ].map((item, idx) => (
-                    <div key={idx} className="space-y-2">
-                      <div className="text-foreground">{item.role}</div>
-                      <div className="text-muted-foreground">@ {item.company}</div>
-                      <div className="text-xs text-muted-foreground">{item.period}</div>
+                    <div key={idx} className="space-y-2 p-4 bg-card/30 border border-border/50 rounded-xl hover:bg-card/50 hover:border-border transition-all duration-300">
+                      <div className="text-foreground font-semibold text-base">{item.role}</div>
+                      <div className="text-sm text-muted-foreground">@ {item.company}</div>
+                      <div className="text-xs text-muted-foreground font-medium">{item.period}</div>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div className="space-y-4">
-                <div className="text-sm text-muted-foreground font-mono">FOCUS</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Focus</div>
                 <div className="flex flex-wrap gap-2">
                   {["Python", "PyTorch", "OpenAI API", "Autogen", "NextJS", "FastAPI", "Docker", "Azure"].map((skill) => (
                     <span
                       key={skill}
-                      className="px-3 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300"
+                      className="px-3 py-1.5 text-xs font-semibold border border-border/50 rounded-lg hover:border-border hover:bg-muted/30 transition-all duration-300"
                     >
                       {skill}
                     </span>
@@ -233,12 +227,12 @@ export default function Portfolio() {
         <section
           id="work"
           ref={(el) => { sectionsRef.current[1] = el }}
-          className="py-24 sm:py-40 lg:py-48"
+          className="py-20 sm:py-32 lg:py-40"
         >
-          <div className="space-y-16 sm:space-y-20 lg:space-y-24">
+          <div className="space-y-12 sm:space-y-16">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light">Selected Work</h2>
-              <div className="text-sm text-muted-foreground font-mono">2021 — 2025</div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Selected Work</h2>
+              <div className="text-sm text-muted-foreground font-bold font-mono tracking-wider">2021 — 2025</div>
             </div>
 
             <div className="space-y-12 sm:space-y-16 lg:space-y-20">
@@ -300,29 +294,31 @@ export default function Portfolio() {
                   ],
                 },
               ].map((job, index) => (
-                <div
+                <article
                   key={index}
-                  className="group grid lg:grid-cols-12 gap-6 sm:gap-10 lg:gap-12 py-8 sm:py-12 lg:py-16 border-b border-border/50 hover:border-border transition-colors duration-500"
+                  className="group relative grid lg:grid-cols-12 gap-6 sm:gap-8 p-6 sm:p-8 border border-border/50 hover:border-border rounded-xl bg-card/30 hover:bg-card/50 backdrop-blur-sm transition-all duration-500 hover:shadow-lg"
                 >
-                  <div className="lg:col-span-2">
-                    <div className="text-2xl sm:text-3xl lg:text-4xl font-light text-muted-foreground group-hover:text-foreground transition-colors duration-500">
+                  {/* Subtle gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-muted/0 to-muted/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none"></div>
+
+                  <div className="lg:col-span-2 relative z-10">
+                    <div className="inline-flex items-center justify-center w-14 h-14 text-xl font-bold text-foreground bg-muted/50 group-hover:bg-muted rounded-lg transition-all duration-500 shadow-sm">
                       {job.year}
                     </div>
                   </div>
 
-                  <div className="lg:col-span-10 space-y-4 sm:space-y-5">
-                    <div>
-                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-medium">{job.role}</h3>
-                      <div className="text-base sm:text-lg text-muted-foreground">{job.company}</div>
+                  <div className="lg:col-span-10 space-y-4 relative z-10">
+                    <div className="space-y-1.5">
+                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold tracking-tight text-foreground group-hover:text-foreground/80 transition-colors duration-300">{job.role}</h3>
+                      <div className="text-sm sm:text-base text-muted-foreground font-medium">@ {job.company}</div>
                     </div>
-                      <ul className="list-disc pl-5 space-y-3 sm:space-y-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
+                    <ul className="list-disc pl-5 space-y-2.5 text-sm sm:text-base text-muted-foreground leading-relaxed font-light">
                       {Array.isArray(job.details)
-                          ? job.details.map((d, i) => <li key={i} dangerouslySetInnerHTML={{ __html: highlightText(d) }} />)
+                        ? job.details.map((d, i) => <li key={i} dangerouslySetInnerHTML={{ __html: highlightText(d) }} />)
                         : null}
                     </ul>
                   </div>
-                  
-                </div>
+                </article>
               ))}
             </div>
           </div>
@@ -331,12 +327,12 @@ export default function Portfolio() {
         <section
           id="education"
           ref={(el) => { sectionsRef.current[2] = el }}
-          className="py-24 sm:py-40 lg:py-48 pb-32"
+          className="py-20 sm:py-32 lg:py-40 pb-24"
         >
-          <div className="space-y-16 sm:space-y-20 lg:space-y-24">
+          <div className="space-y-12 sm:space-y-16">
             <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
-              <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light">Education</h2>
-              <div className="text-sm text-muted-foreground font-mono">2018 - Present</div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight">Education</h2>
+              <div className="text-sm text-muted-foreground font-bold font-mono tracking-wider">2018 — Present</div>
             </div>
 
             <div className="space-y-8 sm:space-y-12">
@@ -384,61 +380,70 @@ export default function Portfolio() {
                   ]
                 }
               ].map((edu, index) => (
-                <div
+                <article
                   key={index}
-                  className="group grid lg:grid-cols-12 gap-6 sm:gap-10 lg:gap-12 py-8 sm:py-12 lg:py-16 border-b border-border/50 hover:border-border transition-colors duration-500"
+                  className="group relative grid lg:grid-cols-12 gap-6 sm:gap-8 p-6 sm:p-8 border border-border/50 hover:border-border rounded-xl bg-card/30 hover:bg-card/50 backdrop-blur-sm transition-all duration-500 hover:shadow-lg"
                 >
-                  <div className="lg:col-span-3">
-                    <div className="text-xl sm:text-2xl font-light text-muted-foreground group-hover:text-foreground transition-colors duration-500 mb-2">
-                      {edu.period}
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      {edu.location}
+                  {/* Subtle gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-muted/0 to-muted/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl pointer-events-none"></div>
+
+                  <div className="lg:col-span-3 relative z-10 space-y-3">
+                    <div className="space-y-2">
+                      <div className="text-base sm:text-lg font-bold text-foreground group-hover:text-foreground/80 transition-colors duration-500">
+                        {edu.period}
+                      </div>
+                      <div className="text-xs text-muted-foreground font-medium flex items-start gap-2">
+                        <svg className="w-3.5 h-3.5 mt-0.5 opacity-70 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        {edu.location}
+                      </div>
                     </div>
                     {edu.gpa && (
-                      <div className="text-xs text-muted-foreground mt-2 font-mono">
+                      <div className="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-bold font-mono bg-muted/50 rounded-lg border border-border/30">
                         GPA: {edu.gpa}
                       </div>
                     )}
                   </div>
 
-                  <div className="lg:col-span-9 space-y-4 sm:space-y-5">
-                    <div>
-                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-medium">{edu.degree}</h3>
-                      <div className="text-base sm:text-lg text-muted-foreground">{edu.school}</div>
+                  <div className="lg:col-span-9 space-y-5 relative z-10">
+                    <div className="space-y-2">
+                      <h3 className="text-lg sm:text-xl lg:text-2xl font-bold tracking-tight text-foreground">{edu.degree}</h3>
+                      <div className="text-sm sm:text-base text-muted-foreground font-semibold">{edu.school}</div>
                       {edu.thesis && (
-                        <div className="text-sm text-muted-foreground mt-2 italic">
-                          Thesis: {edu.thesis}
+                        <div className="text-xs sm:text-sm text-muted-foreground mt-2 italic font-light leading-relaxed">
+                          <span className="font-semibold text-foreground">Thesis:</span> {edu.thesis}
                         </div>
                       )}
                     {index === 1 && (
-                      <div className="mt-3 p-4 bg-muted/30 border border-border rounded-lg">
-                        <h4 className="text-sm font-medium text-foreground uppercase tracking-wider mb-2">Publication</h4>
-                        <div className="space-y-1">
-                          <Link 
+                      <div className="mt-4 p-4 bg-muted/40 border-l-4 border-foreground rounded-lg shadow-sm">
+                        <h4 className="text-xs font-bold text-foreground uppercase tracking-wider mb-2">Publication</h4>
+                        <div className="space-y-1.5">
+                          <Link
                             href="https://link.springer.com/article/10.1007/s00521-024-09744-5"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="group block"
+                            className="group/link block"
                           >
-                            <div className="font-medium text-sm leading-relaxed group-hover:text-muted-foreground transition-colors duration-300">
+                            <div className="font-semibold text-xs sm:text-sm leading-relaxed text-foreground group-hover/link:text-muted-foreground transition-colors duration-300">
                               "Numerical reasoning reading comprehension on Vietnamese COVID-19 news: task, corpus, and challenges"
                             </div>
                           </Link>
-                          <div className="text-xs text-muted-foreground">Van Nguyen, K., Le, T.V. & Do, T.PP.</div>
+                          <div className="text-xs text-muted-foreground font-medium">Van Nguyen, K., Le, T.V. & Do, T.PP.</div>
                           <div className="text-xs text-muted-foreground">Neural Computing & Applications (Q1) • Volume 36, 14053–14073 • 2024</div>
-                          <div className="flex items-center gap-2">
-                            <Link 
+                          <div className="flex items-center gap-2 mt-2">
+                            <Link
                               href="https://link.springer.com/article/10.1007/s00521-024-09744-5"
                               target="_blank"
                               rel="noopener noreferrer"
-                              className="text-xs text-muted-foreground font-mono hover:text-foreground transition-colors duration-300 flex items-center gap-1"
+                              className="group/doi inline-flex items-center gap-1.5 text-xs text-muted-foreground font-mono hover:text-foreground transition-colors duration-300 font-semibold"
                             >
                               DOI: 10.1007/s00521-024-09744-5
-                              <svg 
-                                className="w-3 h-3 transform group-hover:translate-x-0.5 transition-transform duration-300" 
-                                fill="none" 
-                                stroke="currentColor" 
+                              <svg
+                                className="w-3 h-3 transform group-hover/doi:translate-x-0.5 transition-transform duration-300"
+                                fill="none"
+                                stroke="currentColor"
                                 viewBox="0 0 24 24"
                               >
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
@@ -451,21 +456,21 @@ export default function Portfolio() {
                     </div>
 
                     <div className="space-y-3">
-                      <h4 className="text-sm font-medium text-foreground uppercase tracking-wider">Key Highlights</h4>
-                      <ul className="list-disc pl-5 space-y-2 text-muted-foreground leading-relaxed">
+                      <h4 className="text-xs font-bold text-foreground uppercase tracking-wider">Key Highlights</h4>
+                      <ul className="list-disc pl-5 space-y-2 text-muted-foreground leading-relaxed font-light">
                         {edu.highlights.map((highlight, i) => (
-                          <li key={i} className="text-base sm:text-lg">{highlight}</li>
+                          <li key={i} className="text-sm sm:text-base">{highlight}</li>
                         ))}
                       </ul>
                     </div>
 
                     <div className="space-y-3">
-                      <h4 className="text-sm font-medium text-foreground uppercase tracking-wider">Relevant Coursework</h4>
+                      <h4 className="text-xs font-bold text-foreground uppercase tracking-wider">Relevant Coursework</h4>
                       <div className="flex flex-wrap gap-2">
                         {edu.coursework.map((course, i) => (
                           <span
                             key={i}
-                            className="px-3 py-1 text-xs border border-border rounded-full hover:border-muted-foreground/50 transition-colors duration-300 text-muted-foreground"
+                            className="px-3 py-1.5 text-xs font-semibold border border-border/50 rounded-lg hover:border-border hover:bg-muted/30 transition-all duration-300 text-muted-foreground"
                           >
                             {course}
                           </span>
@@ -473,7 +478,7 @@ export default function Portfolio() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
 
