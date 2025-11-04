@@ -208,8 +208,9 @@ The goal of modernization isn't just to upgrade technology—it's to preserve in
   }
 ]
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const thought = thoughts.find((t) => t.slug === params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const thought = thoughts.find((t) => t.slug === slug)
 
   if (!thought) {
     return {
@@ -251,8 +252,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default function ThoughtPage({ params }: { params: { slug: string } }) {
-  const thought = thoughts.find((t) => t.slug === params.slug)
+export default async function ThoughtPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const thought = thoughts.find((t) => t.slug === slug)
 
   if (!thought) {
     notFound()
