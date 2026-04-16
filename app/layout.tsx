@@ -12,10 +12,10 @@ const geist = Geist({
 export const metadata: Metadata = {
   metadataBase: new URL('https://toreleon.github.io'),
   title: {
-    default: "Thang Le Viet - AI Engineer | Portfolio & Blog",
-    template: "%s | Thang Le Viet"
+    default: "tore. — Thang Le Viet",
+    template: "%s · tore.",
   },
-  description: "AI Engineer specializing in large language models, agentic systems, and scalable ML platforms. Explore insights on AI engineering, software development, and technology innovation.",
+  description: "Engineer working on coding agents and multi-agent systems, with a background in NLP and LLM applications.",
   keywords: ["AI Engineer", "Machine Learning", "Large Language Models", "LLM", "Agentic Systems", "AI Engineering", "Software Development", "Deep Learning", "NLP", "Natural Language Processing", "Python", "PyTorch", "NextJS", "Ho Chi Minh City", "Vietnam", "Thang Le Viet"],
   authors: [{ name: "Thang Le Viet", url: "https://toreleon.github.io" }],
   creator: "Thang Le Viet",
@@ -127,8 +127,6 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" href="/placeholder-logo.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/placeholder-logo.png" />
         <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
         <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" />
         <script
