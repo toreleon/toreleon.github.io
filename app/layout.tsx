@@ -1,13 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist } from "next/font/google"
+import { GeistSans } from "geist/font/sans"
 import "./globals.css"
-
-const geist = Geist({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-geist",
-})
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://toreleon.github.io'),
@@ -122,7 +116,7 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="en" className={`${geist.variable}`}>
+    <html lang="en" className={GeistSans.variable}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />

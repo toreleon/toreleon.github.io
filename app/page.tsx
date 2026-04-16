@@ -15,7 +15,18 @@ type Thought = {
   tags: string[]
 }
 
-const thoughts: Thought[] = []
+const thoughts: Thought[] = [
+  {
+    slug: "software-is-gone-so-what-next",
+    title: "Software is gone. So, what next?",
+    excerpt:
+      "Coding agents solved the IDE. The more interesting question is where they go next — and what it means that the center of my day is no longer typing code.",
+    date: "2026-04-17",
+    readTime: "7 min read",
+    category: "Essays",
+    tags: ["Coding Agents", "Multi-Agent Systems", "AI Engineering", "Future of Software"],
+  },
+]
 
 export default function Home() {
   return (
