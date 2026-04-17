@@ -28,61 +28,48 @@ export default function Home() {
         </header>
 
         <section className="pb-24 sm:pb-32">
-          <div className="space-y-10 sm:space-y-14">
-            <div className="flex items-baseline justify-between gap-4">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight">Writing</h2>
-              <div className="text-sm text-muted-foreground font-mono">
-                {thoughts.length > 0
-                  ? `${thoughts.length} post${thoughts.length === 1 ? "" : "s"}`
-                  : "Coming soon"}
-              </div>
+          {thoughts.length === 0 ? (
+            <div className="py-16 border-t border-border">
+              <p className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
+                No posts yet. First essays are in draft — expect notes on coding agents in production, evaluation pitfalls, and the jump from developer tooling to other domains.
+              </p>
             </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+              {thoughts.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/thoughts/${post.slug}`}
+                  className="group flex flex-col gap-5 p-6 sm:p-8 rounded-2xl border border-border bg-card/40 hover:bg-card hover:border-foreground/20 transition-all duration-300"
+                >
+                  <div className="flex items-center gap-3 text-xs font-mono text-muted-foreground">
+                    <span>{post.date}</span>
+                    <span className="text-border">·</span>
+                    <span className="uppercase tracking-[0.2em]">{post.category}</span>
+                    <span className="text-border">·</span>
+                    <span>{post.readTime}</span>
+                  </div>
 
-            {thoughts.length === 0 ? (
-              <div className="py-16 border-t border-border">
-                <p className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
-                  No posts yet. First essays are in draft — expect notes on coding agents in production, evaluation pitfalls, and the jump from developer tooling to other domains.
-                </p>
-              </div>
-            ) : (
-              <div className="divide-y divide-border">
-                {thoughts.map((post) => (
-                  <Link
-                    key={post.slug}
-                    href={`/thoughts/${post.slug}`}
-                    className="group grid lg:grid-cols-12 gap-6 sm:gap-10 py-10 sm:py-14 transition-colors duration-500"
-                  >
-                    <div className="lg:col-span-3 space-y-2">
-                      <div className="text-base font-mono text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
-                        {post.date}
-                      </div>
-                      <div className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
-                        {post.category}
-                      </div>
-                      <div className="text-sm font-mono text-muted-foreground">{post.readTime}</div>
-                    </div>
+                  <h3 className="text-2xl sm:text-3xl font-semibold tracking-tight text-foreground group-hover:text-muted-foreground transition-colors duration-300">
+                    {post.title}
+                  </h3>
 
-                    <div className="lg:col-span-9 space-y-4">
-                      <h3 className="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight text-foreground group-hover:text-muted-foreground transition-colors duration-300">
-                        {post.title}
-                      </h3>
-                      <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
-                        {post.excerpt}
-                      </p>
-                      <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-muted-foreground font-mono">
-                        {post.tags.map((tag, i, arr) => (
-                          <span key={tag} className="flex items-center gap-3">
-                            {tag}
-                            {i < arr.length - 1 && <span className="text-border">·</span>}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+                  <p className="text-base text-muted-foreground leading-relaxed flex-1">
+                    {post.excerpt}
+                  </p>
+
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-xs text-muted-foreground font-mono pt-2 border-t border-border/60">
+                    {post.tags.map((tag, i, arr) => (
+                      <span key={tag} className="flex items-center gap-3">
+                        {tag}
+                        {i < arr.length - 1 && <span className="text-border">·</span>}
+                      </span>
+                    ))}
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </section>
       </main>
 

@@ -327,3 +327,246 @@
     transition-duration: 150ms;
   }
 }
+
+/* ---------------------------------------------------------------
+   Article body — Medium / Notion style long-form reading typography
+---------------------------------------------------------------- */
+.article-body {
+  color: var(--foreground);
+  font-size: 1.125rem;
+  line-height: 1.75;
+  font-weight: 400;
+  letter-spacing: -0.003em;
+  word-break: break-word;
+}
+
+@media (min-width: 640px) {
+  .article-body {
+    font-size: 1.2rem;
+    line-height: 1.78;
+  }
+}
+
+.article-body > * + * {
+  margin-top: 1.6em;
+}
+
+.article-body > * + h2,
+.article-body > * + h3 {
+  margin-top: 2.4em;
+}
+
+.article-body h1,
+.article-body h2,
+.article-body h3,
+.article-body h4 {
+  color: var(--foreground);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  scroll-margin-top: 6rem;
+}
+
+.article-body h2 {
+  font-size: 1.75rem;
+  margin-bottom: 0.2em;
+}
+
+@media (min-width: 640px) {
+  .article-body h2 {
+    font-size: 2rem;
+  }
+}
+
+.article-body h3 {
+  font-size: 1.35rem;
+  margin-bottom: 0.2em;
+}
+
+@media (min-width: 640px) {
+  .article-body h3 {
+    font-size: 1.5rem;
+  }
+}
+
+.article-body h4 {
+  font-size: 1.125rem;
+  margin-bottom: 0.2em;
+}
+
+.article-body p {
+  color: var(--foreground);
+}
+
+.article-body strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.article-body em {
+  font-style: italic;
+}
+
+.article-body a {
+  color: var(--foreground);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklch, var(--muted-foreground) 50%, transparent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 200ms ease;
+}
+
+.article-body a:hover {
+  text-decoration-color: var(--foreground);
+}
+
+.article-body ul,
+.article-body ol {
+  padding-left: 1.5em;
+}
+
+.article-body ul {
+  list-style: disc;
+}
+
+.article-body ol {
+  list-style: decimal;
+}
+
+.article-body li {
+  margin-top: 0.5em;
+  padding-left: 0.25em;
+}
+
+.article-body li::marker {
+  color: var(--muted-foreground);
+}
+
+.article-body li > p {
+  margin: 0;
+}
+
+.article-body li > ul,
+.article-body li > ol {
+  margin-top: 0.5em;
+}
+
+.article-body blockquote {
+  border-left: 3px solid var(--border);
+  padding: 0.1em 0 0.1em 1.4em;
+  margin-left: 0;
+  font-style: italic;
+  color: var(--muted-foreground);
+  font-size: 1.1em;
+  line-height: 1.65;
+}
+
+.article-body blockquote p {
+  color: inherit;
+}
+
+.article-body code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.88em;
+  background: color-mix(in oklch, var(--muted) 70%, transparent);
+  color: var(--foreground);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  border: 1px solid color-mix(in oklch, var(--border) 60%, transparent);
+}
+
+.article-body pre {
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1em 1.25em;
+  overflow-x: auto;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.article-body pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-size: inherit;
+  color: inherit;
+}
+
+.article-body hr {
+  border: none;
+  margin: 3em auto;
+  text-align: center;
+  height: 1em;
+  position: relative;
+}
+
+.article-body hr::before {
+  content: "···";
+  color: var(--muted-foreground);
+  letter-spacing: 0.8em;
+  font-size: 1.25em;
+  padding-left: 0.8em;
+}
+
+.article-body img,
+.article-body video {
+  border-radius: 10px;
+  max-width: 100%;
+  height: auto;
+}
+
+.article-body figure {
+  margin: 0;
+}
+
+.article-body figcaption {
+  text-align: center;
+  color: var(--muted-foreground);
+  font-size: 0.9rem;
+  margin-top: 0.75em;
+}
+
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95em;
+  display: block;
+  overflow-x: auto;
+}
+
+.article-body thead {
+  border-bottom: 1px solid var(--border);
+}
+
+.article-body th,
+.article-body td {
+  padding: 0.6em 0.9em;
+  text-align: left;
+  border-bottom: 1px solid color-mix(in oklch, var(--border) 70%, transparent);
+}
+
+.article-body th {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+/* Selection */
+.article-body ::selection {
+  background: color-mix(in oklch, var(--foreground) 18%, transparent);
+}
+
+/* Reading progress bar */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform-origin: 0 50%;
+  transform: scaleX(var(--progress, 0));
+  background: var(--foreground);
+  z-index: 60;
+  pointer-events: none;
+  transition: transform 100ms linear;
+}

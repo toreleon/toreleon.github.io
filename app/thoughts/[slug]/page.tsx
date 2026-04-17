@@ -2,8 +2,15 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import SiteHeader from "@/components/site-header"
 import SiteFooter from "@/components/site-footer"
+import ReadingProgress from "@/components/reading-progress"
 import type { Metadata } from "next"
 import { getAllThoughtSlugs, getThought } from "@/lib/thoughts"
+
+function formatDate(iso: string): string {
+  const d = new Date(iso)
+  if (Number.isNaN(d.getTime())) return iso
+  return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })
+}
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params
@@ -91,60 +98,61 @@ export default async function ThoughtPage({ params }: { params: Promise<{ slug: 
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <ReadingProgress />
       <SiteHeader active="blog" />
 
       <main className="flex-1 w-full pb-8">
-        <header className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-16 pt-32 sm:pt-40 pb-16 sm:pb-20">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm font-mono text-muted-foreground mb-10">
-            <span>{thought.date}</span>
-            <span className="text-border">·</span>
-            <span>{thought.readTime}</span>
-            <span className="text-border">·</span>
-            <span className="uppercase tracking-[0.2em] text-xs font-medium">
+        <header className="max-w-3xl mx-auto px-6 sm:px-10 pt-32 sm:pt-40 pb-10 sm:pb-14">
+          <div className="mb-6">
+            <span className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">
               {thought.category}
             </span>
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.1] text-foreground mb-8">
+          <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-semibold tracking-tight leading-[1.1] text-foreground mb-6">
             {thought.title}
           </h1>
 
-          <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground leading-relaxed">
+          <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed mb-10">
             {thought.excerpt}
           </p>
+
+          <div className="flex items-center gap-4 pt-6 border-t border-border">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full bg-foreground text-background text-sm font-semibold">
+              T
+            </div>
+            <div className="flex flex-col">
+              <span className="text-sm font-medium text-foreground">Thang Le Viet</span>
+              <span className="text-xs text-muted-foreground">
+                <time dateTime={thought.date}>{formatDate(thought.date)}</time>
+                <span className="mx-1.5 text-border">·</span>
+                <span>{thought.readTime}</span>
+              </span>
+            </div>
+          </div>
         </header>
 
-        <article className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-16 pb-16">
+        <article className="max-w-3xl mx-auto px-6 sm:px-10 pb-16">
           <div
-            className="prose prose-lg prose-neutral dark:prose-invert max-w-none
-            prose-headings:font-semibold prose-headings:text-foreground prose-headings:tracking-tight
-            prose-h2:text-2xl sm:prose-h2:text-3xl prose-h2:mt-14 prose-h2:mb-6
-            prose-p:text-base sm:prose-p:text-lg prose-p:leading-relaxed prose-p:text-muted-foreground prose-p:mb-6
-            prose-li:text-base sm:prose-li:text-lg prose-li:leading-relaxed prose-li:text-muted-foreground prose-li:my-2
-            prose-strong:text-foreground prose-strong:font-medium
-            prose-a:text-foreground prose-a:underline prose-a:decoration-muted-foreground/30 hover:prose-a:decoration-foreground prose-a:transition-all
-            prose-blockquote:border-l-2 prose-blockquote:border-border prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-muted-foreground
-            prose-code:text-foreground prose-code:bg-muted/60 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-code:font-mono prose-code:font-normal
-            prose-hr:border-border"
+            className="article-body"
             dangerouslySetInnerHTML={{ __html: thought.html }}
           />
         </article>
 
-        <div className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-16 py-12 border-t border-border">
-          <div className="space-y-4">
-            <div className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground">Tags</div>
-            <div className="flex flex-wrap gap-x-3 gap-y-2 text-sm text-muted-foreground font-mono">
-              {thought.tags.map((tag, i, arr) => (
-                <span key={tag} className="flex items-center gap-3">
-                  {tag}
-                  {i < arr.length - 1 && <span className="text-border">·</span>}
-                </span>
-              ))}
-            </div>
+        <div className="max-w-3xl mx-auto px-6 sm:px-10 py-10 border-t border-border">
+          <div className="flex flex-wrap gap-2">
+            {thought.tags.map((tag) => (
+              <span
+                key={tag}
+                className="px-3 py-1 rounded-full bg-muted/60 border border-border text-xs text-muted-foreground hover:text-foreground hover:border-foreground/30 transition-colors"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
 
-        <div className="max-w-3xl mx-auto px-6 sm:px-10 lg:px-16 py-12">
+        <div className="max-w-3xl mx-auto px-6 sm:px-10 py-8">
           <Link
             href="/"
             className="group inline-flex items-center gap-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300"
@@ -158,7 +166,7 @@ export default async function ThoughtPage({ params }: { params: Promise<{ slug: 
             >
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
-            <span className="uppercase tracking-[0.2em]">Back to writing</span>
+            <span className="uppercase tracking-[0.2em]">Back to thoughts</span>
           </Link>
         </div>
       </main>
