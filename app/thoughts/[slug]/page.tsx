@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `https://toreleon.github.io/thoughts/${thought.slug}`,
       images: [
         {
-          url: "/og-image.jpg",
+          url: "/placeholder.jpg",
           width: 1200,
           height: 630,
           alt: thought.title,
@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       card: "summary_large_image",
       title: thought.title,
       description: thought.excerpt,
-      images: ["/og-image.jpg"],
+      images: ["/placeholder.jpg"],
     },
     alternates: {
       canonical: `https://toreleon.github.io/thoughts/${thought.slug}`,
@@ -69,7 +69,7 @@ export default async function ThoughtPage({ params }: { params: Promise<{ slug: 
     "@type": "BlogPosting",
     headline: thought.title,
     description: thought.excerpt,
-    image: "https://toreleon.github.io/og-image.jpg",
+    image: "https://toreleon.github.io/placeholder.jpg",
     datePublished: thought.date,
     author: {
       "@type": "Person",

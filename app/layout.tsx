@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: "Thang Le Viet",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/placeholder.jpg",
         width: 1200,
         height: 630,
         alt: "Thang Le Viet - AI Engineer",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Thang Le Viet - AI Engineer | Portfolio & Blog",
     description: "AI Engineer specializing in large language models, agentic systems, and scalable ML platforms.",
-    images: ["/og-image.jpg"],
+    images: ["/placeholder.jpg"],
     creator: "@thanglv",
   },
   robots: {
@@ -52,9 +52,6 @@ export const metadata: Metadata = {
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
-  },
-  verification: {
-    google: "google-site-verification-code", // Replace with actual verification code
   },
   alternates: {
     canonical: "https://toreleon.github.io",
