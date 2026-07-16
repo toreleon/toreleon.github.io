@@ -78,19 +78,19 @@
     .site-header { padding-top: 24px; }
     .nav {
       display: flex;
-      min-height: 48px;
+      min-height: 56px;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--text);
     }
     .name {
-      font-size: 14px;
+      font-size: 15px;
       font-weight: 700;
       letter-spacing: -.01em;
       text-decoration: none;
     }
     .nav-links { display: flex; gap: 28px; }
-    .nav-links a { font-size: 13px; text-decoration: none; }
+    .nav-links a { font-size: 14px; text-decoration: none; }
     .nav-links a:hover { text-decoration: underline; }
 
     .hero {
@@ -102,13 +102,6 @@
       padding-block: clamp(72px, 10vw, 132px) 64px;
     }
     .hero-copy { align-self: center; }
-    .kicker {
-      margin: 0 0 24px;
-      color: var(--secondary);
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: -.005em;
-    }
     h1 {
       max-width: 9ch;
       margin: 0;
@@ -146,9 +139,10 @@
       display: flex;
       justify-content: space-between;
       gap: 16px;
-      margin-top: 9px;
-      color: var(--secondary);
-      font-size: 11px;
+      margin-top: 10px;
+      color: #454a4b;
+      font-size: 12px;
+      font-weight: 500;
       letter-spacing: 0;
     }
 
@@ -176,7 +170,7 @@
     .section-title {
       align-self: start;
       margin: 0;
-      font-size: 15px;
+      font-size: 18px;
       font-weight: 600;
       letter-spacing: -.015em;
     }
@@ -325,7 +319,6 @@
   <main id="main">
     <section class="hero container" id="top" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="kicker">AI engineer based in Ho Chi Minh City</p>
         <h1 id="hero-title">Thang Le Viet</h1>
         <p class="intro">I build coding agents and codebase-intelligence systems. Five years shipping production ML and LLM products, most recently at FPT AI Center.</p>
         <nav class="contact-links" aria-label="Contact and profiles">
@@ -339,22 +332,22 @@
         <div class="photo-crop">
           <img src="assets/thang-by-the-sea.jpeg" width="1086" height="724" alt="Thang standing by the sea">
         </div>
-        <figcaption><span>Thang, outside the terminal</span><span>Vietnam · 2026</span></figcaption>
+        <figcaption><span>Vietnam</span><span>2026</span></figcaption>
       </figure>
     </section>
 
     <dl class="facts container" aria-label="Career summary">
       <div class="fact">
         <dt>Most recent role</dt>
-        <dd>FPT AI Center · AI4SE Lab</dd>
+        <dd>AI Engineer at FPT AI Center, AI4SE Lab</dd>
       </div>
       <div class="fact">
         <dt>Focus</dt>
-        <dd>Coding agents · Codebase intelligence · Evaluation</dd>
+        <dd>Coding agents, codebase intelligence, and LLM evaluation</dd>
       </div>
       <div class="fact">
         <dt>Location</dt>
-        <dd>Ho Chi Minh City · UTC+7</dd>
+        <dd>Ho Chi Minh City (UTC+7)</dd>
       </div>
     </dl>
 
@@ -377,7 +370,7 @@
             <span>
               <span class="work-name">opendev</span>
               <span class="work-description">A terminal-native coding agent for parallel, multi-model development workflows.</span>
-              <span class="work-tech">Rust · 751 stars · 86 forks</span>
+              <span class="work-tech">Rust, 751 stars, 86 forks</span>
             </span>
             <span class="work-arrow" aria-hidden="true">GitHub ↗</span>
           </a>
@@ -387,7 +380,7 @@
             <span>
               <span class="work-name">Metis</span>
               <span class="work-description">A codebase-intelligence engine that generates technical wikis through RAG and vector search.</span>
-              <span class="work-tech">FPT AI Center · Enterprise</span>
+              <span class="work-tech">FPT AI Center, enterprise project</span>
             </span>
             <span class="work-arrow">Internal</span>
           </article>
@@ -397,7 +390,7 @@
             <span>
               <span class="work-name">CADAgent</span>
               <span class="work-description">An AI copilot for FreeCAD with an in-app agent interface for 3D parametric modeling.</span>
-              <span class="work-tech">Python · FreeCAD</span>
+              <span class="work-tech">Python, FreeCAD</span>
             </span>
             <span class="work-arrow" aria-hidden="true">GitHub ↗</span>
           </a>
@@ -407,7 +400,7 @@
             <span>
               <span class="work-name">mcphub</span>
               <span class="work-description">An embeddable Model Context Protocol solution for AI services.</span>
-              <span class="work-tech">Python · 83 stars</span>
+              <span class="work-tech">Python, 83 stars</span>
             </span>
             <span class="work-arrow" aria-hidden="true">GitHub ↗</span>
           </a>
@@ -423,7 +416,7 @@
             <time class="job-date" datetime="2024-01">2024 — 2026</time>
             <div>
               <h3>AI Engineer</h3>
-              <p class="company">FPT AI Center · AI4SE Lab</p>
+              <p class="company">FPT AI Center, AI4SE Lab</p>
             </div>
             <p class="job-description">Led a LangGraph-based multi-agent system for code review and bug localization across <strong>50+ repositories</strong>. Built LLM evaluation pipelines, MCP servers, and production Python backends.</p>
           </article>
@@ -465,12 +458,12 @@
           <div class="notes-block">
             <h3>Research &amp; education</h3>
             <p class="publication-title">Numerical reasoning reading comprehension on Vietnamese COVID-19 news: task, corpus, and challenges.</p>
-            <p class="publication-meta">Neural Computing &amp; Applications · 2024 · Le, T.V. et al.</p>
+            <p class="publication-meta">Neural Computing &amp; Applications, 2024 — Le, T.V. et al.</p>
             <a href="https://doi.org/10.1007/s00521-024-09744-5" target="_blank" rel="noopener noreferrer">Read publication ↗</a>
 
             <div class="education">
-              <p class="education-item"><strong>M.Sc. Computer Science</strong><span>UIT, VNU-HCM · 2023–2026 · GPA 3.7/4.0</span></p>
-              <p class="education-item"><strong>B.Sc. Data Science</strong><span>UIT, VNU-HCM · 2018–2022 · Top 1 in Major</span></p>
+              <p class="education-item"><strong>M.Sc. Computer Science</strong><span>UIT, VNU-HCM, 2023–2026. GPA 3.7/4.0</span></p>
+              <p class="education-item"><strong>B.Sc. Data Science</strong><span>UIT, VNU-HCM, 2018–2022. Top 1 in Major</span></p>
             </div>
           </div>
 
@@ -494,7 +487,7 @@
       </div>
       <footer class="footer">
         <span>© 2026 Thang Le Viet</span>
-        <span>Ho Chi Minh City, Vietnam · UTC+7</span>
+        <span>Ho Chi Minh City, Vietnam (UTC+7)</span>
       </footer>
     </section>
   </main>
