@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    /*
+     * This project is referenced by tsconfig.json, so it must be `composite`
+     * and must NOT set `noEmit` (TypeScript rejects that combination with
+     * TS6310). Build info is redirected out of the source tree; `npm run build`
+     * runs plain `tsc`, which never emits for a referenced project.
+     */
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "target": "ES2020",
+    "lib": ["ES2020"],
+    "isolatedModules": true
+  },
+  "include": ["vite.config.ts"]
+}
