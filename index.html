@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thang Le Viet — AI Engineer</title>
+  <meta name="description" content="Thang Le Viet is an AI engineer working on coding agents, codebase intelligence, and production LLM systems.">
+  <meta name="author" content="Thang Le Viet">
+  <meta name="theme-color" content="#f5f5f1">
+  <link rel="canonical" href="https://toreleon.github.io/">
+  <meta property="og:title" content="Thang Le Viet — AI Engineer">
+  <meta property="og:description" content="AI engineer working on coding agents and codebase intelligence.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toreleon.github.io/">
+  <meta property="og:image" content="https://toreleon.github.io/assets/thang-by-the-sea.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Thang Le Viet — AI Engineer">
+  <meta name="twitter:description" content="AI engineer working on coding agents and codebase intelligence.">
+  <meta name="twitter:image" content="https://toreleon.github.io/assets/thang-by-the-sea.jpeg">
+  <link rel="preload" href="assets/thang-by-the-sea.jpeg" as="image" type="image/jpeg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Thang Le Viet",
+    "jobTitle": "AI Engineer",
+    "email": "mailto:levietthang0512@outlook.com",
+    "url": "https://toreleon.github.io/",
+    "sameAs": [
+      "https://github.com/toreleon",
+      "https://linkedin.com/in/thanglv"
+    ]
+  }
+  </script>
+  <style>
+    :root {
+      --background: #f5f5f1;
+      --surface: #ecece6;
+      --text: #171a1b;
+      --secondary: #5d6263;
+      --rule: #c9cbc7;
+      --blue: #006d7b;
+      --max-width: 1180px;
+      --gutter: clamp(20px, 4vw, 56px);
+      --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-underline-offset: 3px; }
+    a:hover { color: var(--blue); }
+    ::selection { background: #9dd6dc; }
+    :focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+
+    .skip {
+      position: fixed;
+      top: -60px;
+      left: 16px;
+      z-index: 20;
+      padding: 8px 12px;
+      background: var(--text);
+      color: white;
+      font-size: 13px;
+    }
+    .skip:focus { top: 16px; }
+    .container { width: min(100%, var(--max-width)); margin-inline: auto; padding-inline: var(--gutter); }
+
+    .site-header { padding-top: 24px; }
+    .nav {
+      display: flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--text);
+    }
+    .name {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -.01em;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a { font-size: 13px; text-decoration: none; }
+    .nav-links a:hover { text-decoration: underline; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(300px, .82fr) minmax(440px, 1.18fr);
+      gap: clamp(40px, 7vw, 96px);
+      align-items: end;
+      min-height: 690px;
+      padding-block: clamp(72px, 10vw, 132px) 64px;
+    }
+    .hero-copy { align-self: center; }
+    .kicker {
+      margin: 0 0 24px;
+      color: var(--secondary);
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -.005em;
+    }
+    h1 {
+      max-width: 9ch;
+      margin: 0;
+      font-size: clamp(48px, 6.2vw, 84px);
+      font-weight: 500;
+      letter-spacing: -.065em;
+      line-height: .98;
+    }
+    .intro {
+      max-width: 460px;
+      margin: 36px 0 0;
+      font-size: clamp(18px, 1.7vw, 22px);
+      letter-spacing: -.018em;
+      line-height: 1.45;
+    }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 32px; }
+    .contact-links a { font-size: 13px; font-weight: 700; }
+
+    .photo { margin: 0; }
+    .photo-crop {
+      aspect-ratio: 3 / 2;
+      overflow: hidden;
+      border: 1px solid var(--text);
+      background: #b9d8df;
+    }
+    .photo img {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: cover;
+      transform: scale(1.42);
+      transform-origin: 59% 80%;
+    }
+    .photo figcaption {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 9px;
+      color: var(--secondary);
+      font-size: 11px;
+      letter-spacing: 0;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      width: min(calc(100% - (var(--gutter) * 2)), calc(var(--max-width) - (var(--gutter) * 2)));
+      margin: 0 auto;
+      padding-inline: 0;
+      border-top: 1px solid var(--text);
+      border-bottom: 1px solid var(--text);
+    }
+    .fact { padding: 22px 24px 22px 0; }
+    .fact + .fact { padding-left: 24px; border-left: 1px solid var(--rule); }
+    .fact dt { margin-bottom: 4px; font-size: 13px; font-weight: 600; }
+    .fact dd { margin: 0; color: var(--secondary); font-size: 14px; }
+
+    .section { padding-block: clamp(80px, 10vw, 136px); border-bottom: 1px solid var(--rule); }
+    .section-grid {
+      display: grid;
+      grid-template-columns: minmax(170px, .28fr) minmax(0, .72fr);
+      gap: clamp(40px, 8vw, 120px);
+    }
+    .hero > *, .section-grid > *, .work-item > *, .job > * { min-width: 0; }
+    .section-title {
+      align-self: start;
+      margin: 0;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -.015em;
+    }
+    .large-copy {
+      max-width: 820px;
+      margin: 0;
+      font-size: clamp(28px, 3.3vw, 46px);
+      font-weight: 400;
+      letter-spacing: -.04em;
+      line-height: 1.16;
+    }
+    .large-copy + .large-copy { margin-top: 24px; color: var(--secondary); }
+
+    .work-list { border-top: 1px solid var(--text); }
+    .work-item {
+      display: grid;
+      grid-template-columns: minmax(130px, .28fr) minmax(260px, .72fr) 64px;
+      gap: 24px;
+      padding-block: 28px;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+    }
+    .work-item:hover { color: inherit; background: var(--surface); }
+    .work-role { align-self: start; color: var(--secondary); font-size: 13px; line-height: 1.45; }
+    .work-name { display: block; margin: 0 0 8px; font-size: clamp(22px, 2.2vw, 31px); font-weight: 500; letter-spacing: -.035em; line-height: 1.1; }
+    .work-description { display: block; max-width: 600px; margin: 0; color: var(--secondary); font-size: 14px; }
+    .work-tech { display: block; margin-top: 16px; color: var(--secondary); font-size: 12px; }
+    .work-arrow { align-self: start; font-size: 12px; font-weight: 600; white-space: nowrap; }
+    article.work-item .work-arrow { color: var(--secondary); font-weight: 400; }
+
+    .timeline { border-top: 1px solid var(--text); }
+    .job {
+      display: grid;
+      grid-template-columns: minmax(128px, .22fr) minmax(180px, .3fr) minmax(280px, .48fr);
+      gap: 28px;
+      padding-block: 28px 34px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .job-date { color: var(--secondary); font-size: 12px; font-variant-numeric: tabular-nums; }
+    .job h3 { margin: 0 0 4px; font-size: 17px; font-weight: 600; letter-spacing: -.02em; }
+    .company { margin: 0; color: var(--secondary); font-size: 13px; }
+    .job-description { margin: 0; color: var(--secondary); font-size: 14px; }
+    .job-description strong { color: var(--text); font-weight: 600; }
+
+    .notes-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(48px, 9vw, 120px); }
+    .notes-block h3 {
+      margin: 0 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--text);
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .publication-title { margin: 0 0 12px; font-size: 18px; line-height: 1.4; }
+    .publication-meta { margin: 0 0 18px; color: var(--secondary); font-size: 13px; }
+    .notes-block a { font-size: 13px; font-weight: 700; }
+    .education { margin-top: 48px; }
+    .education-item { margin: 0; font-size: 14px; }
+    .education-item + .education-item { margin-top: 18px; }
+    .education-item span { display: block; color: var(--secondary); font-size: 12px; }
+    .skills { margin: 0; font-size: 15px; line-height: 1.8; }
+    .skills + .skills { margin-top: 20px; }
+    .skills strong { display: block; margin-bottom: 2px; font-size: 13px; font-weight: 600; }
+
+    .contact { padding-block: clamp(88px, 12vw, 160px) 32px; }
+    .contact-layout { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 48px; align-items: end; }
+    .contact h2 {
+      max-width: 750px;
+      margin: 0;
+      font-size: clamp(44px, 7vw, 92px);
+      font-weight: 500;
+      letter-spacing: -.065em;
+      line-height: .95;
+    }
+    .contact-note { max-width: 340px; margin: 28px 0 0; color: var(--secondary); font-size: 15px; }
+    .email-link { font-size: 14px; font-weight: 700; white-space: nowrap; }
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      margin-top: 120px;
+      padding-top: 16px;
+      border-top: 1px solid var(--text);
+      color: var(--secondary);
+      font-size: 12px;
+    }
+
+    @media (max-width: 1100px) {
+      .job {
+        grid-template-columns: 112px minmax(0, 1fr);
+        column-gap: 24px;
+        row-gap: 8px;
+      }
+      .job-description { grid-column: 2; }
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-copy { max-width: 700px; }
+      h1 { max-width: 11ch; }
+      .photo { width: min(100%, 760px); }
+      .section-grid { grid-template-columns: 1fr; gap: 44px; }
+      .work-item { grid-template-columns: minmax(120px, .28fr) minmax(220px, .72fr) 64px; gap: 18px; }
+    }
+
+    @media (max-width: 680px) {
+      .site-header { padding-top: 12px; }
+      .nav-links { gap: 16px; }
+      .nav-links a:first-child { display: none; }
+      .hero { gap: 48px; padding-block: 72px 48px; }
+      h1 { font-size: clamp(46px, 15vw, 72px); }
+      .contact-links { gap: 14px; }
+      .facts { grid-template-columns: 1fr; }
+      .fact { padding: 17px 0; }
+      .fact + .fact { padding-left: 0; border-top: 1px solid var(--rule); border-left: 0; }
+      .section-grid { gap: 32px; }
+      .work-item { grid-template-columns: 1fr; gap: 10px; padding-block: 24px; }
+      .work-role, .work-arrow { display: none; }
+      .job { grid-template-columns: 1fr; gap: 8px; }
+      .job-description { grid-column: auto; margin-top: 8px; }
+      .notes-grid { grid-template-columns: 1fr; }
+      .contact-layout { grid-template-columns: 1fr; align-items: start; }
+      .email-link { white-space: normal; overflow-wrap: anywhere; }
+      .footer { flex-direction: column; margin-top: 80px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="site-header container">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="name" href="#top">Thang Le Viet</a>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="https://github.com/toreleon" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:levietthang0512@outlook.com">Email</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero container" id="top" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="kicker">AI engineer based in Ho Chi Minh City</p>
+        <h1 id="hero-title">Thang Le Viet</h1>
+        <p class="intro">I build coding agents and codebase-intelligence systems. Five years shipping production ML and LLM products, currently at FPT AI Center.</p>
+        <nav class="contact-links" aria-label="Contact and profiles">
+          <a href="mailto:levietthang0512@outlook.com">Email</a>
+          <a href="https://github.com/toreleon" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a href="https://linkedin.com/in/thanglv" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        </nav>
+      </div>
+
+      <figure class="photo">
+        <div class="photo-crop">
+          <img src="assets/thang-by-the-sea.jpeg" width="1086" height="724" alt="Thang standing by the sea">
+        </div>
+        <figcaption><span>Thang, outside the terminal</span><span>Vietnam · 2026</span></figcaption>
+      </figure>
+    </section>
+
+    <dl class="facts container" aria-label="Career summary">
+      <div class="fact">
+        <dt>Current</dt>
+        <dd>FPT AI Center · AI4SE Lab</dd>
+      </div>
+      <div class="fact">
+        <dt>Focus</dt>
+        <dd>Coding agents · Codebase intelligence · Evaluation</dd>
+      </div>
+      <div class="fact">
+        <dt>Location</dt>
+        <dd>Ho Chi Minh City · UTC+7</dd>
+      </div>
+    </dl>
+
+    <section class="section container" id="about" aria-labelledby="about-title">
+      <div class="section-grid">
+        <h2 class="section-title" id="about-title">About</h2>
+        <div>
+          <p class="large-copy">My work is about making AI useful inside a real software engineering workflow.</p>
+          <p class="large-copy">That means understanding a codebase, finding the right context, making a change, and knowing whether it is actually correct.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="work" aria-labelledby="work-title">
+      <div class="section-grid">
+        <h2 class="section-title" id="work-title">Selected work</h2>
+        <div class="work-list">
+          <a class="work-item" href="https://github.com/opendev-to/opendev" target="_blank" rel="noopener noreferrer">
+            <span class="work-role">Core contributor<br>#2 by commits</span>
+            <span>
+              <span class="work-name">opendev</span>
+              <span class="work-description">A terminal-native coding agent for parallel, multi-model development workflows.</span>
+              <span class="work-tech">Rust · 751 stars · 86 forks</span>
+            </span>
+            <span class="work-arrow" aria-hidden="true">GitHub ↗</span>
+          </a>
+
+          <article class="work-item">
+            <span class="work-role">Lead engineer</span>
+            <span>
+              <span class="work-name">Metis</span>
+              <span class="work-description">A codebase-intelligence engine that generates technical wikis through RAG and vector search.</span>
+              <span class="work-tech">FPT AI Center · Enterprise</span>
+            </span>
+            <span class="work-arrow">Internal</span>
+          </article>
+
+          <a class="work-item" href="https://github.com/toreleon/CADAgent" target="_blank" rel="noopener noreferrer">
+            <span class="work-role">Creator</span>
+            <span>
+              <span class="work-name">CADAgent</span>
+              <span class="work-description">An AI copilot for FreeCAD with an in-app agent interface for 3D parametric modeling.</span>
+              <span class="work-tech">Python · FreeCAD</span>
+            </span>
+            <span class="work-arrow" aria-hidden="true">GitHub ↗</span>
+          </a>
+
+          <a class="work-item" href="https://github.com/Cognitive-Stack/mcphub" target="_blank" rel="noopener noreferrer">
+            <span class="work-role">Maintainer</span>
+            <span>
+              <span class="work-name">mcphub</span>
+              <span class="work-description">An embeddable Model Context Protocol solution for AI services.</span>
+              <span class="work-tech">Python · 83 stars</span>
+            </span>
+            <span class="work-arrow" aria-hidden="true">GitHub ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="experience" aria-labelledby="experience-title">
+      <div class="section-grid">
+        <h2 class="section-title" id="experience-title">Experience</h2>
+        <div class="timeline">
+          <article class="job">
+            <time class="job-date" datetime="2024-01">2024 — now</time>
+            <div>
+              <h3>AI Engineer</h3>
+              <p class="company">FPT AI Center · AI4SE Lab</p>
+            </div>
+            <p class="job-description">Led a LangGraph-based multi-agent system for code review and bug localization across <strong>50+ repositories</strong>. Built LLM evaluation pipelines, MCP servers, and production Python backends.</p>
+          </article>
+
+          <article class="job">
+            <time class="job-date" datetime="2022-04">2022 — 2023</time>
+            <div>
+              <h3>AI Engineer</h3>
+              <p class="company">Resonance Technology</p>
+            </div>
+            <p class="job-description">Shipped LLM features that increased platform engagement by <strong>83.7%</strong>. Made SERP clustering 40% faster with more than 5× lower memory usage.</p>
+          </article>
+
+          <article class="job">
+            <time class="job-date" datetime="2021-07">2021 — 2022</time>
+            <div>
+              <h3>Data Scientist</h3>
+              <p class="company">Be Group</p>
+            </div>
+            <p class="job-description">Improved top-recommendation CTR from <strong>55% to 70%</strong> for Be Food and increased recommendation clicks by 8% through personalization.</p>
+          </article>
+
+          <article class="job">
+            <time class="job-date" datetime="2020-02">2020 — 2022</time>
+            <div>
+              <h3>Research Assistant</h3>
+              <p class="company">NLP@UIT Lab</p>
+            </div>
+            <p class="job-description">Built COVIDROP, the first Vietnamese numerical-reasoning reading-comprehension dataset, and implemented NAQANet and NumNet baselines.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" aria-labelledby="notes-title">
+      <div class="section-grid">
+        <h2 class="section-title" id="notes-title">Notes</h2>
+        <div class="notes-grid">
+          <div class="notes-block">
+            <h3>Research &amp; education</h3>
+            <p class="publication-title">Numerical reasoning reading comprehension on Vietnamese COVID-19 news: task, corpus, and challenges.</p>
+            <p class="publication-meta">Neural Computing &amp; Applications · 2024 · Le, T.V. et al.</p>
+            <a href="https://doi.org/10.1007/s00521-024-09744-5" target="_blank" rel="noopener noreferrer">Read publication ↗</a>
+
+            <div class="education">
+              <p class="education-item"><strong>M.Sc. Computer Science</strong><span>UIT, VNU-HCM · 2023–2026 · GPA 3.7/4.0</span></p>
+              <p class="education-item"><strong>B.Sc. Data Science</strong><span>UIT, VNU-HCM · 2018–2022 · Top 1 in Major</span></p>
+            </div>
+          </div>
+
+          <div class="notes-block">
+            <h3>Working knowledge</h3>
+            <p class="skills"><strong>AI systems</strong>LLM agents, LangGraph, RAG, MCP, tool calling, evaluation, LoRA</p>
+            <p class="skills"><strong>Engineering</strong>Python, TypeScript, Rust, PyTorch, Transformers, FastAPI, Docker, Kubernetes</p>
+            <p class="skills"><strong>Languages</strong>Vietnamese (native), English (C1)</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact container" id="contact" aria-labelledby="contact-title">
+      <div class="contact-layout">
+        <div>
+          <h2 id="contact-title">Let’s work together.</h2>
+          <p class="contact-note">I’m interested in AI engineering roles, open-source collaboration, and difficult problems in software development.</p>
+        </div>
+        <a class="email-link" href="mailto:levietthang0512@outlook.com">levietthang0512@outlook.com ↗</a>
+      </div>
+      <footer class="footer">
+        <span>© 2026 Thang Le Viet</span>
+        <span>Ho Chi Minh City, Vietnam · UTC+7</span>
+      </footer>
+    </section>
+  </main>
+</body>
+</html>
