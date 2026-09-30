@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>mainframe-env | Mainframe foundations, built in Rust</title>
+  <meta name="description" content="Explore mainframe-env: an open-source Rust implementation of a bounded mainframe application environment, with a deterministic COBOL core and owned subsystem contracts.">
+  <meta property="og:title" content="mainframe-env | Mainframe foundations, built in Rust">
+  <meta property="og:description" content="A deterministic COBOL core. Explicit subsystem boundaries. Evidence-led compatibility. Explore the project and run your first fixture.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://toreleon.github.io/mainframe-env/">
+  <link rel="canonical" href="https://toreleon.github.io/mainframe-env/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header wrap">
+    <a class="wordmark" href="#" aria-label="mainframe-env home"><span class="mark" aria-hidden="true">m/</span>mainframe-env</a>
+    <nav aria-label="Main navigation">
+      <a href="#architecture">Architecture</a>
+      <a href="#scope">Scope</a>
+      <a href="#start">Quick start</a>
+    </nav>
+    <a class="repo-link" href="https://github.com/toreleon/mainframe-env">GitHub <span aria-hidden="true">↗</span></a>
+  </header>
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Open source · Rust · Apache 2.0</p>
+        <h1 id="hero-title">Mainframe foundations.<br><span>Built in Rust.</span></h1>
+        <p class="hero-description">A bounded application environment for COBOL and mainframe workloads, built around deterministic execution and explicit contracts.</p>
+        <div class="actions"><a class="button primary" href="#start">Run your first fixture</a><a class="text-link" href="https://github.com/toreleon/mainframe-env/blob/main/docs/README.md">Read the documentation <span aria-hidden="true">↗</span></a></div>
+      </div>
+      <figure class="machine-map" aria-label="Architecture: COBOL source enters the compiler and deterministic execution kernel, then accesses providers through owned contracts.">
+        <div class="map-top"><span>APPLICATION ENVIRONMENT</span><span aria-hidden="true">[ m/env ]</span></div>
+        <div class="source-line"><span class="map-label">INPUT</span><span>COBOL source</span><span class="map-type">.cbl</span></div>
+        <div class="map-connector" aria-hidden="true"></div>
+        <div class="kernel-block"><span class="map-label">DETERMINISTIC CORE</span><strong>Compile. Verify. Execute.</strong><div class="stages"><span>Typed IR</span><span>Legalization</span><span>Interpreter</span></div></div>
+        <div class="map-connector" aria-hidden="true"></div>
+        <div class="contract-line">Owned host &amp; store contracts</div>
+        <div class="map-connector branching" aria-hidden="true"></div>
+        <div class="provider-grid"><span>CICS</span><span>Datasets</span><span>RACF / SAF</span><span>Db2</span><span>IMS / MQ</span><span>Durable stores</span></div>
+        <figcaption>Semantic work stays deterministic.<br>I/O and state live behind owned boundaries.</figcaption>
+      </figure>
+    </section>
+    <aside class="release-band" aria-label="Project release status"><div class="wrap release-inner"><span class="release-title">Built in the open.<br>Measured by evidence.</span><a href="https://github.com/toreleon/mainframe-env/releases/tag/mainframe-env-v0.8.2"><small>Published release</small><strong>0.8.2 <span>source bundle</span></strong></a><div><small>Development baseline</small><strong>0.8.3</strong></div><div><small>Next planned minor</small><strong>0.9.0 <span>CICS API</span></strong></div></div></aside>
+    <section id="architecture" class="section wrap" aria-labelledby="architecture-title">
+      <div class="section-heading"><p class="eyebrow">Designed from the inside out</p><h2 id="architecture-title">A deterministic core.<br>An adaptable environment.</h2><p>mainframe-env is a greenfield implementation. Its boundaries keep language semantics independent of transport, scheduling, and persistence.</p></div>
+      <div class="architecture-grid">
+        <article class="architecture-primary"><span class="mono section-tag">CORE / COMPILER + EXECUTION</span><h3>One path from source<br>to execution.</h3><p>COBOL moves through typed compiler stages into verified, legalized IR. A reference interpreter drives explicit machine transitions.</p><div class="pipeline" aria-label="Compiler pipeline"><span>Source</span><b aria-hidden="true">→</b><span>Typed HIR</span><b aria-hidden="true">→</b><span>Verified IR</span><b aria-hidden="true">→</b><span>Execution</span></div><a class="text-link" href="https://github.com/toreleon/mainframe-env/blob/main/docs/architecture/OVERVIEW.md">Explore the architecture <span aria-hidden="true">↗</span></a></article>
+        <div class="architecture-secondary"><article><span class="mono section-tag">BOUNDARIES / OWNED CONTRACTS</span><h3>Explicit effects.<br>Replaceable infrastructure.</h3><p>Host services and stores connect through project-owned types. Framework details stay outside stable semantic contracts.</p></article><article><span class="mono section-tag">VERIFICATION / CONFORMANCE</span><h3>Compatibility has a paper trail.</h3><p>Versioned catalogs, fixtures, and evidence connect claimed behavior to checks. A local pass never becomes licensed IBM equivalence.</p><a class="text-link" href="https://github.com/toreleon/mainframe-env/blob/main/docs/delivery/VERIFICATION-STRATEGY.md">Read the verification strategy <span aria-hidden="true">↗</span></a></article></div>
+      </div>
+    </section>
+    <section id="scope" class="section scope-section wrap" aria-labelledby="scope-title">
+      <div class="section-heading"><h2 id="scope-title">The environment around<br>your application.</h2><p>Explore the project’s language and subsystem boundaries. Each surface has its own contracts, supported scope, and verification work.</p></div>
+      <div class="scope-layout">
+        <div class="scope-tabs" role="tablist" aria-label="Project surfaces" aria-orientation="vertical">
+          <button role="tab" id="tab-language" aria-controls="panel-language" aria-selected="true" tabindex="0">Language &amp; execution<span>COBOL</span></button>
+          <button role="tab" id="tab-transactions" aria-controls="panel-transactions" aria-selected="false" tabindex="-1">Transactions &amp; security<span>CICS · RACF / SAF</span></button>
+          <button role="tab" id="tab-batch" aria-controls="panel-batch" aria-selected="false" tabindex="-1">Batch &amp; datasets<span>JCL / JES · VSAM · spool</span></button>
+          <button role="tab" id="tab-integration" aria-controls="panel-integration" aria-selected="false" tabindex="-1">Integration &amp; state<span>z/OSMF · Db2 · IMS · MQ</span></button>
+        </div>
+        <div class="scope-panels">
+          <article role="tabpanel" id="panel-language" aria-labelledby="tab-language" tabindex="0"><span class="mono section-tag">LANGUAGE &amp; EXECUTION</span><h3>COBOL, with its semantics<br>at the center.</h3><p>Source handling, preprocessing, parsing, semantic analysis, compilation, and reference execution live in one coherent kernel.</p><ul class="scope-list"><li>Typed intermediate representations</li><li>Deterministic machine transitions</li><li>Explicit diagnostics and bounded resources</li></ul><a class="text-link" href="https://github.com/toreleon/mainframe-env/tree/main/crates/kernel">Browse the kernel <span aria-hidden="true">↗</span></a></article>
+          <article role="tabpanel" id="panel-transactions" aria-labelledby="tab-transactions" tabindex="0" hidden><span class="mono section-tag">TRANSACTIONS &amp; SECURITY</span><h3>Application services,<br>behind typed boundaries.</h3><p>CICS provider contracts model transaction interactions. RACF / SAF boundaries own identity, authorization, and audit behavior on supported paths.</p><ul class="scope-list"><li>Terminal, file, and program-control interactions</li><li>Explicit condition and transaction handling</li><li>Capability-scoped host access</li></ul><a class="text-link" href="https://github.com/toreleon/mainframe-env/blob/main/docs/delivery/coverage-versions/0.9.0.md">Read the planned CICS API scope <span aria-hidden="true">↗</span></a></article>
+          <article role="tabpanel" id="panel-batch" aria-labelledby="tab-batch" tabindex="0" hidden><span class="mono section-tag">BATCH &amp; DATASETS</span><h3>Jobs, steps, and data<br>as explicit lifecycles.</h3><p>JCL follows a typed job-plan workflow. JES, dataset, and spool providers own the surrounding resource and execution contracts.</p><ul class="scope-list"><li>Job, step, DD, and condition lifecycles</li><li>Dataset, VSAM, and catalog surfaces</li><li>Spool and persistence boundaries</li></ul><a class="text-link" href="https://github.com/toreleon/mainframe-env/blob/main/docs/releases/0.8.md">Read the 0.8 release notes <span aria-hidden="true">↗</span></a></article>
+          <article role="tabpanel" id="panel-integration" aria-labelledby="tab-integration" tabindex="0" hidden><span class="mono section-tag">INTEGRATION &amp; STATE</span><h3>Broader surfaces.<br>Versioned scope.</h3><p>The workspace includes z/OSMF, Db2, IMS, MQ, and store boundaries. Their complete programming surfaces remain part of the planned release roadmap.</p><ul class="scope-list"><li>z/OSMF protocol translation</li><li>Db2, IMS, and MQ provider contracts</li><li>Memory, SQLite, PostgreSQL, and artifact stores</li></ul><a class="text-link" href="https://github.com/toreleon/mainframe-env/blob/main/docs/delivery/coverage-versions/README.md">Explore the coverage roadmap <span aria-hidden="true">↗</span></a></article>
+        </div>
+      </div>
+      <noscript><p>All project surfaces are described in the <a href="https://github.com/toreleon/mainframe-env/blob/main/docs/README.md">documentation portal</a>.</p></noscript>
+    </section>
+    <section id="start" class="section wrap start-section" aria-labelledby="start-title">
+      <div class="start-copy"><p class="eyebrow">Start with a small program</p><h2 id="start-title">From checkout<br>to COBOL.</h2><p>Clone the project, install its pinned Rust toolchain, and run the included fixed-format HELLO fixture.</p><p class="start-note">The repository pins Rust 1.98.0. The standalone server is a development composition; consult the operations runbook before starting it.</p><a class="text-link" href="https://github.com/toreleon/mainframe-env/blob/main/docs/runbooks/OPERATIONS.md">Operations runbook <span aria-hidden="true">↗</span></a></div>
+      <div class="code-block"><div class="code-header"><span class="mono">QUICK START / SHELL</span><button id="copy-command" type="button">Copy commands</button></div><pre><code id="commands">git clone https://github.com/toreleon/mainframe-env.git
+cd mainframe-env
+
+# Install the toolchain pinned in rust-toolchain.toml
+rustup toolchain install 1.98.0
+
+# Run the included fixed-format COBOL fixture
+cargo run --quiet -p mainframe-env-cli \
+  --bin mainframe-env -- \
+  run conformance/0.1/fixtures/cobol/HELLO.cbl \
+  --format fixed
+
+# Clear local build artifacts when finished
+cargo clean</code></pre><p id="copy-status" role="status" aria-live="polite"></p></div>
+    </section>
+    <section class="section wrap boundary-section" aria-labelledby="boundary-title"><div><span class="mono section-tag">PROJECT STATUS</span><h2 id="boundary-title">Clear scope.<br>Honest claims.</h2></div><div class="boundary-copy"><p>mainframe-env is under active development. Release 0.8.2 is a source bundle; the 0.8.3 workspace is unreleased. Production readiness is not claimed.</p><p>IBM documentation and licensed systems are conformance authorities. This is an independent project, not an IBM product. Local and modeled results do not establish licensed IBM equivalence; required differential campaigns remain pending where documented.</p><a class="text-link" href="https://github.com/toreleon/mainframe-env/blob/main/docs/delivery/coverage-versions/status/0.9.0.md">Check the readiness record <span aria-hidden="true">↗</span></a></div></section>
+    <section class="section wrap resources" aria-labelledby="resources-title"><h2 id="resources-title">Go deeper.</h2><div class="resource-grid"><a href="https://github.com/toreleon/mainframe-env/blob/main/docs/README.md"><span class="mono">LEARN</span><h3>Documentation</h3><p>Architecture, decisions, and runbooks.</p></a><a href="https://github.com/toreleon/mainframe-env/blob/main/CONTRIBUTING.md"><span class="mono">BUILD</span><h3>Contribute</h3><p>Project conventions and verification gates.</p></a><a href="https://github.com/toreleon/mainframe-env/issues"><span class="mono">FOLLOW</span><h3>Development</h3><p>Issues, scope, and work in progress.</p></a></div></section>
+  </main>
+  <footer class="wrap site-footer"><a class="wordmark" href="#"><span class="mark" aria-hidden="true">m/</span>mainframe-env</a><p>Independent. Open source. Apache 2.0.</p><div><a href="https://github.com/toreleon/mainframe-env/blob/main/LICENSE">License</a><a href="https://github.com/toreleon/mainframe-env/blob/main/SECURITY.md">Security</a></div></footer>
+</body>
+</html>
