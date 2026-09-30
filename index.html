@@ -118,7 +118,8 @@
       line-height: 1.45;
     }
     .contact-links { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 32px; }
-    .contact-links a { font-size: 14px; font-weight: 700; }
+    .contact-links a { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; font-weight: 700; }
+    .contact-links svg { width: 16px; height: 16px; flex-shrink: 0; }
 
     .photo { margin: 0; }
     .photo-crop {
@@ -198,8 +199,8 @@
     .work-name { display: block; margin: 0 0 10px; font-size: clamp(24px, 2.2vw, 32px); font-weight: 500; letter-spacing: -.035em; line-height: 1.1; }
     .work-description { display: block; max-width: 600px; margin: 0; color: var(--secondary); font-size: 16px; line-height: 1.55; }
     .work-tech { display: block; margin-top: 14px; color: var(--secondary); font-size: 14px; }
-    .work-arrow { align-self: start; font-size: 14px; font-weight: 600; white-space: nowrap; }
-    article.work-item .work-arrow { color: var(--secondary); font-weight: 400; }
+    .work-source { align-self: start; font-size: 14px; font-weight: 600; white-space: nowrap; }
+    article.work-item .work-source { color: var(--secondary); font-weight: 400; }
 
     .timeline { border-top: 1px solid var(--text); }
     .job {
@@ -288,7 +289,7 @@
       .section-grid { gap: 32px; }
       .section { padding-block: 68px; }
       .work-item { grid-template-columns: 1fr; gap: 10px; padding-block: 26px; }
-      .work-role, .work-arrow { display: none; }
+      .work-role, .work-source { display: none; }
       .job { grid-template-columns: 1fr; gap: 8px; padding-block: 26px 30px; }
       .job-description { grid-column: auto; margin-top: 8px; }
       .notes-grid { grid-template-columns: 1fr; }
@@ -322,10 +323,23 @@
       <div class="hero-copy">
         <h1 id="hero-title">Thang Le Viet</h1>
         <p class="intro">I build coding agents and codebase-intelligence systems. Five years shipping production ML and LLM products, most recently at FPT AI Center.</p>
-        <nav class="contact-links" aria-label="Contact and profiles">
-          <a href="mailto:levietthang0512@outlook.com">Email</a>
-          <a href="https://github.com/toreleon" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-          <a href="https://linkedin.com/in/thanglv" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        <nav class="contact-links" aria-label="Contact, profiles, and resume">
+          <a href="mailto:levietthang0512@outlook.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <span>Email</span>
+          </a>
+          <a href="https://github.com/toreleon" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .75a11.25 11.25 0 0 0-3.558 21.923c.563.104.773-.244.773-.542 0-.267-.01-1.155-.015-2.097-3.13.58-3.79-.768-3.79-.768-.512-1.3-1.25-1.646-1.25-1.646-1.023-.7.078-.686.078-.686 1.13.079 1.725 1.16 1.725 1.16 1.005 1.722 2.637 1.224 3.28.936.102-.728.393-1.224.715-1.506-2.499-.285-5.126-1.25-5.126-5.563 0-1.228.44-2.232 1.16-3.02-.117-.284-.503-1.428.11-2.978 0 0 .945-.302 3.095 1.154A10.79 10.79 0 0 1 12 6.738c.956.004 1.918.13 2.817.379 2.148-1.456 3.092-1.154 3.092-1.154.615 1.55.228 2.694.112 2.978.722.788 1.158 1.792 1.158 3.02 0 4.324-2.631 5.275-5.138 5.554.404.35.763 1.04.763 2.096 0 1.514-.014 2.735-.014 3.106 0 .3.204.651.779.54A11.25 11.25 0 0 0 12 .75Z"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a href="https://linkedin.com/in/thanglv" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M20.45 2H3.55C2.69 2 2 2.68 2 3.52v16.96c0 .84.69 1.52 1.55 1.52h16.9c.86 0 1.55-.68 1.55-1.52V3.52c0-.84-.69-1.52-1.55-1.52ZM7.93 18.75H4.98V9.2h2.95v9.55ZM6.45 7.9a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42Zm12.3 10.85H15.8V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.5V9.2h2.84v1.3h.04c.4-.75 1.36-1.55 2.8-1.55 3 0 3.57 1.98 3.57 4.55v5.25Z"/></svg>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://github.com/toreleon/resume/blob/main/resume.pdf" target="_blank" rel="noopener noreferrer">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h6"/></svg>
+            <span>Resume (PDF)</span>
+          </a>
         </nav>
       </div>
 
@@ -373,7 +387,7 @@
               <span class="work-description">A terminal-native coding agent for parallel, multi-model development workflows.</span>
               <span class="work-tech">Rust, 751 stars, 86 forks</span>
             </span>
-            <span class="work-arrow" aria-hidden="true">GitHub ↗</span>
+            <span class="work-source" aria-hidden="true">GitHub</span>
           </a>
 
           <article class="work-item">
@@ -383,7 +397,7 @@
               <span class="work-description">A codebase-intelligence engine that generates technical wikis through RAG and vector search.</span>
               <span class="work-tech">FPT AI Center, enterprise project</span>
             </span>
-            <span class="work-arrow">Internal</span>
+            <span class="work-source">Internal</span>
           </article>
 
           <a class="work-item" href="https://github.com/toreleon/CADAgent" target="_blank" rel="noopener noreferrer">
@@ -393,7 +407,7 @@
               <span class="work-description">An AI copilot for FreeCAD with an in-app agent interface for 3D parametric modeling.</span>
               <span class="work-tech">Python, FreeCAD</span>
             </span>
-            <span class="work-arrow" aria-hidden="true">GitHub ↗</span>
+            <span class="work-source" aria-hidden="true">GitHub</span>
           </a>
 
           <a class="work-item" href="https://github.com/Cognitive-Stack/mcphub" target="_blank" rel="noopener noreferrer">
@@ -403,7 +417,7 @@
               <span class="work-description">An embeddable Model Context Protocol solution for AI services.</span>
               <span class="work-tech">Python, 83 stars</span>
             </span>
-            <span class="work-arrow" aria-hidden="true">GitHub ↗</span>
+            <span class="work-source" aria-hidden="true">GitHub</span>
           </a>
         </div>
       </div>
@@ -460,7 +474,7 @@
             <h3>Research &amp; education</h3>
             <p class="publication-title">Numerical reasoning reading comprehension on Vietnamese COVID-19 news: task, corpus, and challenges.</p>
             <p class="publication-meta">Neural Computing &amp; Applications, 2024 — Le, T.V. et al.</p>
-            <a href="https://doi.org/10.1007/s00521-024-09744-5" target="_blank" rel="noopener noreferrer">Read publication ↗</a>
+            <a href="https://doi.org/10.1007/s00521-024-09744-5" target="_blank" rel="noopener noreferrer">Read publication</a>
 
             <div class="education">
               <p class="education-item"><strong>M.Sc. Computer Science</strong><span>UIT, VNU-HCM, 2023–2026. GPA 3.7/4.0</span></p>
@@ -484,7 +498,7 @@
           <h2 id="contact-title">Let’s work together.</h2>
           <p class="contact-note">I’m open to AI engineering roles, open-source collaboration, and difficult problems in software development.</p>
         </div>
-        <a class="email-link" href="mailto:levietthang0512@outlook.com">levietthang0512@outlook.com ↗</a>
+        <a class="email-link" href="mailto:levietthang0512@outlook.com">levietthang0512@outlook.com</a>
       </div>
       <footer class="footer">
         <span>© 2026 Thang Le Viet</span>
